@@ -30,6 +30,8 @@ public class ArticleActivity extends AppCompatActivity {
 
         mArticle = (Article) getIntent().getSerializableExtra(Constant.BUNDLE_ARTICLE_DATA);
 
+        setTitle(mArticle.getShortTitle());
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

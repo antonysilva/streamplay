@@ -1,6 +1,8 @@
 package br.com.streamplay.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.models.Article;
+import br.com.streamplay.ui.article.ArticleActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -39,10 +43,33 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, ArticleActivity.class);
+                intent.putExtra(Constant.BUNDLE_ARTICLE_DATA, mArticles.get(position));
+                mContext.startActivity(intent);
+            }
+        };
+
+        View.OnClickListener listenerFvorite = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int favorite = (!holder.mTxFavorite.getText().toString().isEmpty()) ? Integer.parseInt(holder.mTxFavorite.getText().toString()) + 1 : 1;
+                holder.mTxFavorite.setText(String.valueOf(favorite));
+            }
+        };
+
+        holder.mAuthor.setOnClickListener(listener);
+        holder.mTitle.setOnClickListener(listener);
+        holder.mDescription.setOnClickListener(listener);
+        holder.mImage.setOnClickListener(listener);
+        holder.mFavirite.setOnClickListener(listenerFvorite);
+
         holder.mAuthor.setText(mArticles.get(position).getAuthor());
-        holder.mTitle.setText(mArticles.get(position).getTitle());
-        holder.mDescription.setText(mArticles.get(position).getDescription());
+        holder.mTitle.setText(mArticles.get(position).getShortTitle());
+        holder.mDescription.setText(mArticles.get(position).getShortDescription());
         Picasso.with(mContext)
                .load(mArticles.get(position)
                .getImage())
@@ -59,10 +86,14 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         TextView mAuthor;
         @BindView(R.id.title)
         TextView mTitle;
+        @BindView(R.id.tx_favorite)
+        TextView mTxFavorite;
         @BindView(R.id.description)
         TextView mDescription;
         @BindView(R.id.main_image)
         ImageView mImage;
+        @BindView(R.id.favirite)
+        ImageView mFavirite;
 
 
         public ViewHolder(View itemView) {
@@ -70,4 +101,6 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
             ButterKnife.bind(this, itemView);
         }
     }
+
+
 }

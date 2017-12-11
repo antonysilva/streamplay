@@ -1,5 +1,7 @@
 package br.com.streamplay.ui.search;
 
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -177,4 +179,5 @@ public class SearchableActivity extends AppCompatActivity {
             return Packagename;
         }
     }
+
 }

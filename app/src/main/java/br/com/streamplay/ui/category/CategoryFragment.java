@@ -1,5 +1,6 @@
 package br.com.streamplay.ui.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +23,8 @@ import br.com.streamplay.models.Article;
 import br.com.streamplay.models.Video;
 import br.com.streamplay.presenters.ArticlePresenter;
 import br.com.streamplay.presenters.VideoPresenter;
+import br.com.streamplay.ui.article.ArticleActivity;
+import br.com.streamplay.ui.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,8 +66,6 @@ public class CategoryFragment extends Fragment {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         if(mOptions.equalsIgnoreCase("video")) {
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewVideoListener));
-        }else if(mOptions.equalsIgnoreCase("article")){
-            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewArticleListener));
         }
         getData();
     }
@@ -73,6 +74,7 @@ public class CategoryFragment extends Fragment {
     public void getData(){
         switch (mOptions){
             case "article":
+                ArticlePresenter.getInstance().setArticleCallback(articleCallback);
                 ArticlePresenter.getInstance().findByCategory(mCategory);
                 break;
             case "video":
@@ -122,19 +124,12 @@ public class CategoryFragment extends Fragment {
         public void onItemClick(View view, int position) {
             if(mVideos != null){
                 if(mVideos.size() > 0){
-
+                    Intent intent = new Intent(getContext(), VideoActivity.class);
+                    intent.putExtra(Constant.BUNDLE_HOME_VIDEO_DATA, mVideos.get(position));
+                    startActivity(intent);
                 }
             }
         }
     };
 
-    /***
-     * Article Touch Listner
-     */
-    RecyclerItemClickListener.OnItemClickListener recyclerViewArticleListener = new RecyclerItemClickListener.OnItemClickListener() {
-        @Override
-        public void onItemClick(View view, int position) {
-
-        }
-    };
 }

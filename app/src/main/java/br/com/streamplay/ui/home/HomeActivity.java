@@ -24,6 +24,7 @@ import br.com.streamplay.callbacks.IHomeCallback;
 import br.com.streamplay.models.HomeData;
 import br.com.streamplay.presenters.HomePresenter;
 import br.com.streamplay.ui.category.CategoryActivity;
+import br.com.streamplay.ui.search.SearchableActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -88,7 +89,8 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-         if (id == R.id.action_favorite) {
+         if (id == R.id.action_search) {
+             startActivity(new Intent(HomeActivity.this, SearchableActivity.class));
             return true;
         }
 
@@ -119,19 +121,19 @@ public class HomeActivity extends AppCompatActivity
             intent.putExtra(Constant.BUNDLE_CATEGORY, "financial");
             startActivity(intent);
         } else if (id == R.id.nav_article_news) {
-            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_OPTION, "article");
             intent.putExtra(Constant.BUNDLE_CATEGORY, "news");
             startActivity(intent);
         } else if (id == R.id.nav_article_sports) {
-            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_OPTION, "article");
             intent.putExtra(Constant.BUNDLE_CATEGORY, "sports");
             startActivity(intent);
         } else if (id == R.id.nav_article_financial) {
-            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_OPTION, "article");
             intent.putExtra(Constant.BUNDLE_CATEGORY, "financial");
             startActivity(intent);
         } else if (id == R.id.nav_article_technology) {
-            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_OPTION, "article");
             intent.putExtra(Constant.BUNDLE_CATEGORY, "technology");
             startActivity(intent);
         }

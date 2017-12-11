@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.streamplay.Constant;
@@ -136,9 +137,9 @@ public class VideoFragment extends Fragment{
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (250 * size), getResources().getDisplayMetrics()));
             lp.setMargins(
                     0,
-                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics()),
+                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()),
                     0,
-                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics())
+                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics())
             );
             return lp;
         }catch (Exception ex){
@@ -152,8 +153,8 @@ public class VideoFragment extends Fragment{
     public void startSared(){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "Here is the share content body";
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        String shareBody = mVideo.getShortDescription();
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, mVideo.getTitle());
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
@@ -165,11 +166,25 @@ public class VideoFragment extends Fragment{
         @Override
         public void onSuccess(List<Video> videos) {
             try {
-                mVideoSuggestions = videos;
-                mRecyclerView.setLayoutParams(getLayoutParams(mVideoSuggestions.size()));
+                List<Video> lista = new ArrayList<>();
+
+                for (Video video : videos){
+                    if(mVideo.getTitle().equalsIgnoreCase(video.getTitle())){
+                        continue;
+                    }else{
+                        lista.add(video);
+                    }
+
+                }
+
+                LinearLayoutManager llm = new LinearLayoutManager(getContext());
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+                mRecyclerView.setLayoutManager(llm);
                 mRecyclerView.setNestedScrollingEnabled(false);
                 mRecyclerView.setHasFixedSize(true);
-                mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), mVideoSuggestions));
+                mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), lista));
+                mRecyclerView.setLayoutParams(getLayoutParams(mVideoSuggestions.size()));
             }catch (Exception ex){}
         }
 

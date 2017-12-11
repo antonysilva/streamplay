@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 
 public interface IArticleService {
 
-    @GET("/article/category/{category}")
+    @GET("/articles/category/{category}")
     Call<List<Article>> findByCategory(@Path("category") String category);
 
 }

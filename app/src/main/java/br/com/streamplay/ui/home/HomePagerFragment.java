@@ -64,7 +64,6 @@ public class HomePagerFragment extends Fragment {
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewVideoListener));
             mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), mData.getVideos()));
         }else if(mPagerPosition == 1){
-            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewArticleListener));
             mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mData.getArticles()));
         }
     }
@@ -82,18 +81,6 @@ public class HomePagerFragment extends Fragment {
                     startActivity(intent);
                 }
             }
-        }
-    };
-
-    /***
-     * Article Touch Listner
-     */
-    RecyclerItemClickListener.OnItemClickListener recyclerViewArticleListener = new RecyclerItemClickListener.OnItemClickListener() {
-        @Override
-        public void onItemClick(View view, int position) {
-            Intent intent = new Intent(getContext(), ArticleActivity.class);
-            intent.putExtra(Constant.BUNDLE_ARTICLE_DATA, mData.getArticles().get(position));
-            startActivity(intent);
         }
     };
 

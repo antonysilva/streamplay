@@ -40,12 +40,24 @@ public class Article implements Serializable{
         this.title = title;
     }
 
+    public String getShortTitle() {
+        if (title.length() > 60)
+            return title.substring(0,59) + "...";
+        return title;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getShortDescription() {
+        if (description.length() > 150)
+            return description.substring(0,149) + "...";
+        return description;
     }
 
     public String getImage() {

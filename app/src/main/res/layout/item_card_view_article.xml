@@ -50,6 +50,7 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:layout_margin="5dp"
+                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/main_image"/>
 
             <TextView
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:layout_margin="5dp"
+                android:layout_marginStart="10dp"
                 android:layout_below="@+id/title"
                 android:layout_toEndOf="@+id/main_image"/>
 
@@ -74,17 +76,17 @@
                     android:id="@+id/favirite"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/ic_favorite"
-                    android:layout_toStartOf="@+id/views"/>
+                    android:layout_marginStart="40dp"
+                    android:src="@drawable/ic_favorite"/>
 
-                <ImageView
-                    android:id="@+id/views"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                <TextView
+                    android:id="@+id/tx_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_views"
-                    android:layout_alignParentEnd="true"/>
+                    android:text="0"
+                    android:layout_toEndOf="@+id/favirite"/>
+
 
 
             </RelativeLayout>
