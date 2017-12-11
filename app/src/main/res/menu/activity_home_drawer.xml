@@ -23,18 +23,18 @@
     <item android:title="Artigos">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_article_news"
                 android:title="Notícias" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_article_sports"
                 android:title="Esportes" />
 
             <item
-                android:id="@+id/nav_financial"
+                android:id="@+id/nav_article_financial"
                 android:title="Economia" />
 
             <item
-                android:id="@+id/nav_technology"
+                android:id="@+id/nav_article_technology"
                 android:title="Tecnologia" />
         </menu>
     </item>

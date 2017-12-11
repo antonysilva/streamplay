@@ -115,11 +115,25 @@ public class HomeActivity extends AppCompatActivity
             intent.putExtra(Constant.BUNDLE_CATEGORY, "technology");
             startActivity(intent);
         } else if (id == R.id.nav_video_financial) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            intent.putExtra(Constant.BUNDLE_OPTION, "video");
+            intent.putExtra(Constant.BUNDLE_CATEGORY, "financial");
+            startActivity(intent);
+        } else if (id == R.id.nav_article_news) {
+            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_CATEGORY, "news");
+            startActivity(intent);
+        } else if (id == R.id.nav_article_sports) {
+            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_CATEGORY, "sports");
+            startActivity(intent);
+        } else if (id == R.id.nav_article_financial) {
+            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_CATEGORY, "financial");
+            startActivity(intent);
+        } else if (id == R.id.nav_article_technology) {
+            intent.putExtra(Constant.BUNDLE_OPTION, "articles");
+            intent.putExtra(Constant.BUNDLE_CATEGORY, "technology");
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

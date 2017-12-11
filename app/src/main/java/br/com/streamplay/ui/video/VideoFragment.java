@@ -84,7 +84,6 @@ public class VideoFragment extends Fragment{
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewVideoListener));
     }
 
@@ -134,7 +133,7 @@ public class VideoFragment extends Fragment{
 
     private LinearLayout.LayoutParams getLayoutParams(int size){
         try{
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (48 * size), getResources().getDisplayMetrics()));
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (250 * size), getResources().getDisplayMetrics()));
             lp.setMargins(
                     0,
                     (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics()),
@@ -149,6 +148,15 @@ public class VideoFragment extends Fragment{
 
     }
 
+    @OnClick(R.id.btn_share)
+    public void startSared(){
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Here is the share content body";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
 
     /***
      * Video Callback

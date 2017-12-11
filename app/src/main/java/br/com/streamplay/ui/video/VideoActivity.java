@@ -18,13 +18,12 @@ import br.com.streamplay.R;
 import br.com.streamplay.models.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class VideoActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
-    private android.support.v7.widget.ShareActionProvider mShareActionProvider;
 
     Video mVideo;
 
@@ -59,44 +58,10 @@ public class VideoActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate menu resource file.
-        getMenuInflater().inflate(R.menu.shared_action, menu);
-
-        // Locate MenuItem with ShareActionProvider
-        MenuItem item = menu.findItem(R.id.menu_item_share);
-
-        // Fetch and store ShareActionProvider
-        mShareActionProvider = (android.support.v7.widget.ShareActionProvider) MenuItemCompat.getActionProvider(item);
-
-        // Return true to display menu
-        return true;
-    }
-
-    private void startSared(){
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        String shareBody = "Here is the share content body";
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, "Share via"));
-    }
-
-    // Call to update the share intent
-    private void setShareIntent(Intent shareIntent) {
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                     finish();
-                break;
-            case R.id.menu_item_share:
-                startSared();
                 break;
         }
         return true;

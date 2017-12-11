@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
@@ -25,6 +27,8 @@ public class ArticleFragment extends Fragment {
 
     @BindView(R.id.web_view)
     WebView mWebView;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
     Article mArticle;
 
@@ -43,10 +47,20 @@ public class ArticleFragment extends Fragment {
     }
 
     public void openArticle(){
-        mWebView.setWebChromeClient(new WebChromeClient());
         mWebView.setWebViewClient(new WebViewClient());
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress)
+            {
+                //Make the bar disappear after URL is loaded, and changes string to Loading...
+                // Return the app name after finish loading
+                if(progress == 100)
+                    mProgress.setVisibility(View.VISIBLE);
+            }
+        });
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
+        mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+
         mWebView.loadUrl(mArticle.getArticle_url());
     }
 }

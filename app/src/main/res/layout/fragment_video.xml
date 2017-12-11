@@ -4,13 +4,13 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:descendantFocusability="blocksDescendants">
 
         <RelativeLayout
+            android:id="@+id/surface"
             android:layout_width="match_parent"
             android:layout_height="250dp">
 
@@ -38,12 +38,12 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/surface_controller"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:background="@drawable/bg_media_controller"
-            android:layout_alignParentBottom="true">
+            android:layout_below="@+id/surface">
 
             <ImageView
                 android:id="@+id/btn_play_and_pause"
@@ -84,7 +84,41 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btn_favorite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_favorite"/>
+
+            <TextView
+                android:id="@+id/tx_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="10dp"
+                android:textSize="12sp"
+                android:layout_toEndOf="@+id/btn_favorite"/>
+
+            <ImageView
+                android:id="@+id/btn_share"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_menu_share"
+                android:layout_toEndOf="@+id/tx_favorite"/>
+
+        </RelativeLayout>
+
+
         <TextView
+            android:id="@+id/tx_suggestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
@@ -95,6 +129,7 @@
             android:text="@string/suggestions_videos"/>
 
         <View
+            android:id="@+id/separator_suggestion"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/white"/>
@@ -102,7 +137,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </ScrollView>
