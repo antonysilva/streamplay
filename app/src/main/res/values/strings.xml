@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">StreamPlay</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_search">Procurar</string>
+    <string name="action_favorite">Favoritos</string>
+    <string name="search_hint">Procurar</string>
+    <string name="suggestions_videos">Vídeos Talvez Goste</string>
+</resources>

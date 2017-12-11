@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Vídeos">
+        <menu>
+            <item
+                android:id="@+id/nav_video_anime"
+                android:title="Animação" />
+            <item
+                android:id="@+id/nav_video_sports"
+                android:title="Esportes" />
+            <item
+                android:id="@+id/nav_video_financial"
+                android:title="Finanças" />
+            <item
+                android:id="@+id/nav_video_technology"
+                android:title="Technologia" />
+        </menu>
+    </item>
+
+    <item android:title="Artigos">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="Notícias" />
+            <item
+                android:id="@+id/nav_send"
+                android:title="Esportes" />
+
+            <item
+                android:id="@+id/nav_financial"
+                android:title="Economia" />
+
+            <item
+                android:id="@+id/nav_technology"
+                android:title="Tecnologia" />
+        </menu>
+    </item>
+
+</menu>
