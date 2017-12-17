@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 public class Article implements Serializable{
 
+    private int id;
     private String author;
     private String category;
     private String title;
@@ -15,6 +16,14 @@ public class Article implements Serializable{
     private String image;
     private String article_url;
     private String published_at;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getAuthor() {
         return author;

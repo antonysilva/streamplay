@@ -56,6 +56,7 @@ public class HomeActivity extends AppCompatActivity
         mHomePresenter = mHomePresenter.getInstance();
 
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         getHomeData();
 

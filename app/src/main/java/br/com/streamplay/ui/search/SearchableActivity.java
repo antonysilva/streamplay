@@ -1,5 +1,7 @@
 package br.com.streamplay.ui.search;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import java.util.Collections;
 import java.util.List;
 
 import br.com.streamplay.adapters.SearchableResultAdapter;
+import br.com.streamplay.database.StreamPlayHelper;
 import br.com.streamplay.models.HomeData;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -165,7 +168,8 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     private void getAppList(final String q){
-
+        StreamPlayHelper mHelper = new StreamPlayHelper(this);
+        SQLiteDatabase database = mHelper.getWritableDatabase();
     }
 
     public String getAppNameFromPkgName(String Packagename) {

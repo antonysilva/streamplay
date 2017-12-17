@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,12 +17,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
@@ -47,6 +50,8 @@ public class VideoFragment extends Fragment{
     TextView mTitle;
     @BindView(R.id.description)
     TextView mDescription;
+    @BindView(R.id.video_time)
+    TextView mVideoTime;
     @BindView(R.id.btn_play_and_pause)
     ImageView mPlayOrPauseButtom;
     @BindView(R.id.btn_full_screem)
@@ -55,11 +60,15 @@ public class VideoFragment extends Fragment{
     ProgressBar mProgress;
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+    @BindView(R.id.video_progress)
+    SeekBar mVideoProgress;
 
     private Uri mUri;
     private Video mVideo;
     private List<Video> mVideoSuggestions;
     private int mStopTime;
+
+    private Handler mHandler = new Handler();
 
     @Nullable
     @Override
@@ -77,6 +86,8 @@ public class VideoFragment extends Fragment{
 
         VideoPresenter.getInstance().setVideoCallback(videoCallback);
         VideoPresenter.getInstance().findByCategory(mVideo.getCategory());
+
+        mVideoProgress.setOnSeekBarChangeListener(seekBarChangeListener);
 
         return view;
     }
@@ -114,6 +125,7 @@ public class VideoFragment extends Fragment{
                 mProgress.setVisibility(View.GONE);
                 mVideoView.seekTo(mStopTime);
                 mVideoView.start();
+                showDuration(mVideoView.getDuration());
                 mPlayOrPauseButtom.setSelected(mVideoView.isPlaying());
             }
         });
@@ -158,6 +170,52 @@ public class VideoFragment extends Fragment{
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
+    protected void showDuration(long duration){
+        String time = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration),
+                TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
+
+        mVideoProgress.setProgress(mVideoView.getCurrentPosition());
+        mVideoProgress.setMax(mVideoView.getDuration());
+
+        mVideoTime.setText(time);
+        updateProgress();
+    }
+
+    private void updateProgress(){
+        mHandler.postDelayed(runnable, 100);
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if(mVideoView.isPlaying()){
+                mVideoProgress.setProgress(mVideoView.getCurrentPosition());
+                mHandler.postDelayed(this, 100);
+            }
+        }
+    };
+
+    /***
+     * SeekBar Listener
+     */
+
+    SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            mVideoView.seekTo(mVideoProgress.getProgress());
+            updateProgress();
+        }
+    };
 
     /***
      * Video Callback

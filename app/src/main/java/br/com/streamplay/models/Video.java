@@ -1,5 +1,7 @@
 package br.com.streamplay.models;
 
+import android.support.annotation.Nullable;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
 
 public class Video implements Serializable{
 
+    private int id;
     private String title;
     private String description;
     private String category;
@@ -17,6 +20,14 @@ public class Video implements Serializable{
     private List<String> tags;
 
     public Video(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
