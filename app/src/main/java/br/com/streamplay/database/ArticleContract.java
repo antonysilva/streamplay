@@ -1,6 +1,7 @@
 package br.com.streamplay.database;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -12,6 +13,20 @@ import br.com.streamplay.models.Video;
  */
 
 public class ArticleContract {
+
+    public static String[] selectColumns = {
+            ArticleEntry.COLUMN_NAME_ID,
+            ArticleEntry.COLUMN_NAME_AUTHOR,
+            ArticleEntry.COLUMN_NAME_CATEGORY,
+            ArticleEntry.COLUMN_NAME_TITLE,
+            ArticleEntry.COLUMN_NAME_DESCRIPTION,
+            ArticleEntry.COLUMN_NAME_IMAGE,
+            ArticleEntry.COLUMN_NAME_ARTICLE_URL,
+            ArticleEntry.COLUMN_NAME_PUBLISHED_AT
+    };
+
+    public static String whereId = ArticleEntry.COLUMN_NAME_ID + "= ?";
+    public static String whereSearchable = "LOWER(" + ArticleEntry.COLUMN_NAME_TITLE + ") LIKE ?";
 
     public ArticleContract(){
 
@@ -41,7 +56,7 @@ public class ArticleContract {
 
     public static long create(Article article, SQLiteDatabase database) throws Exception{
         ContentValues values = new ContentValues();
-        values.put(ArticleEntry.COLUMN_NAME_ID, 1);
+        values.put(ArticleEntry.COLUMN_NAME_ID, article.getId());
         values.put(ArticleEntry.COLUMN_NAME_AUTHOR, article.getAuthor());
         values.put(ArticleEntry.COLUMN_NAME_CATEGORY, article.getCategory());
         values.put(ArticleEntry.COLUMN_NAME_TITLE, article.getTitle());
@@ -52,5 +67,29 @@ public class ArticleContract {
 
         long newRowId = database.insert(ArticleEntry.TABLE_NAME, null, values);
         return newRowId;
+    }
+
+    public static Cursor find(String[] query, SQLiteDatabase database) throws Exception{
+        return database.query(
+                ArticleEntry.TABLE_NAME,
+                selectColumns,
+                whereSearchable,
+                query,
+                null,
+                null,
+                null
+        );
+    }
+
+    public static Cursor findById(String[] id, SQLiteDatabase database) throws Exception{
+        return database.query(
+                ArticleEntry.TABLE_NAME,
+                selectColumns,
+                whereId,
+                id,
+                null,
+                null,
+                null
+        );
     }
 }

@@ -4,13 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.search.SearchableActivity">
 
     <include layout="@layout/app_bar_default"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:descendantFocusability="blocksDescendants">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_video"
+                android:drawablePadding="5dp"
+                android:layout_margin="10dp"
+                android:text="@string/videos"
+                style="@style/TextViewTitle"/>
+
+            <TextView
+                android:id="@+id/video_not_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_video_found"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_article"
+                android:drawablePadding="5dp"
+                android:layout_margin="10dp"
+                android:text="@string/articles"
+                style="@style/TextViewTitle"/>
+
+            <TextView
+                android:id="@+id/article_not_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_article_found"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </LinearLayout>

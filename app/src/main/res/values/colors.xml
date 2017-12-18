@@ -7,4 +7,5 @@
     <color name="colorVideoBlack">#808080</color>
     <color name="colorVideoPlayer">#99000000</color>
     <color name="colorBackgroundApp">#FFFFFF</color>
+    <color name="textColor">#404040</color>
 </resources>

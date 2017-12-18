@@ -1,6 +1,7 @@
 package br.com.streamplay;
 
 import android.app.Application;
+import android.content.Context;
 
 import br.com.streamplay.database.StreamPlayHelper;
 
@@ -9,6 +10,12 @@ import br.com.streamplay.database.StreamPlayHelper;
  */
 
 public class Applicattion extends Application {
+    public static StreamPlayHelper applicationHelper;
 
-    public static StreamPlayHelper mHelper = new StreamPlayHelper(this);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        applicationHelper = new StreamPlayHelper(this);
+    }
 }

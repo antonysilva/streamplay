@@ -2,6 +2,7 @@ package br.com.streamplay.ui.splashscreem;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,12 +37,6 @@ public class SplashScreemFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_splash_screem, container, false);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getActivity().startActivity(new Intent(getContext(), HomeActivity.class));
-            }
-        }, 2000);
 
         HomePresenter presenter = HomePresenter.getInstance();
         presenter.setHomeServiceCallback(homeCallback);
@@ -52,17 +47,28 @@ public class SplashScreemFragment extends Fragment {
 
     public void insertData(HomeData data){
         try{
-
-            SQLiteDatabase database = Applicattion.mHelper.getWritableDatabase();
+            SQLiteDatabase database = Applicattion.applicationHelper.getWritableDatabase();
 
             for(Video video : data.getVideos()){
-                VideoContract.create(video, database);
+                String[] id = { String.valueOf(video.getId()) };
+                Cursor cursor = VideoContract.findById(id, database);
+                if(cursor != null){
+                    if(!cursor.moveToFirst()){ VideoContract.create(video, database); }
+                }else{ VideoContract.create(video, database); }
             }
 
             for (Article article : data.getArticles()){
-                ArticleContract.create(article, database);
+                String[] id = { String.valueOf(article.getId()) };
+                Cursor cursor = ArticleContract.findById(id, database);
+                if(cursor != null){
+                    if(!cursor.moveToFirst()){ ArticleContract.create(article, database); }
+                }else{ ArticleContract.create(article, database); }
             }
-        }catch (Throwable t){}
+        }catch (Throwable t){ }
+    }
+
+    public synchronized void openHome(){
+       getActivity().startActivity(new Intent(getContext(), HomeActivity.class));
     }
 
     /***
@@ -73,6 +79,7 @@ public class SplashScreemFragment extends Fragment {
         @Override
         public void onSuccess(HomeData data) {
             insertData(data);
+            openHome();
         }
 
         @Override

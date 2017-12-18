@@ -68,4 +68,9 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
             ButterKnife.bind(this, itemView);
         }
     }
+
+    public void changeData(List<Video> videos){
+        mVideos = videos;
+        notifyDataSetChanged();
+    }
 }

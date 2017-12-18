@@ -18,16 +18,29 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.com.streamplay.Applicattion;
+import br.com.streamplay.Constant;
+import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
 import br.com.streamplay.adapters.SearchableResultAdapter;
+import br.com.streamplay.adapters.VideoCardAdapter;
+import br.com.streamplay.adapters.VideoRecyclerListAdapter;
+import br.com.streamplay.database.ArticleContract;
 import br.com.streamplay.database.StreamPlayHelper;
+import br.com.streamplay.database.VideoContract;
+import br.com.streamplay.models.Article;
 import br.com.streamplay.models.HomeData;
+import br.com.streamplay.models.Video;
+import br.com.streamplay.ui.video.VideoActivity;
+import br.com.streamplay.util.RecyclerItemClickListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -37,12 +50,23 @@ public class SearchableActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.recycler_view)
-    RecyclerView mRecyclerView;
+    @BindView(R.id.recycler_view_video)
+    RecyclerView mRecyclerViewVideo;
+    @BindView(R.id.recycler_view_article)
+    RecyclerView mRecyclerViewArticle;
+    @BindView(R.id.video_not_found)
+    TextView mNoVideoText;
+    @BindView(R.id.article_not_found)
+    TextView mNoArticleText;
 
-    LinearLayoutManager mLayoutManager;
-    SearchableResultAdapter mAdapter;
+    LinearLayoutManager mLayoutManagerV;
+    LinearLayoutManager mLayoutManagerA;
+    VideoRecyclerListAdapter mAdapterVideo;
+    ArticleRecyclerListAdapter mAdapterArticle;
     HomeData mListData;
+
+    List<Video> videos = new ArrayList<>();
+    List<Article> articles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +82,13 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     protected void initView() {
-        mAdapter = new SearchableResultAdapter(this, null);
-        mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mAdapterVideo = new VideoRecyclerListAdapter(this, new ArrayList<Video>());
+        mLayoutManagerV = new LinearLayoutManager(this);
+        mLayoutManagerV.setOrientation(LinearLayoutManager.VERTICAL);
+
+        mAdapterArticle = new ArticleRecyclerListAdapter(this, new ArrayList<Article>());
+        mLayoutManagerA = new LinearLayoutManager(this);
+        mLayoutManagerA.setOrientation(LinearLayoutManager.VERTICAL);
 
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,8 +97,12 @@ public class SearchableActivity extends AppCompatActivity {
         }
 
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerViewVideo.setLayoutManager(mLayoutManagerV);
+        mRecyclerViewVideo.setAdapter(mAdapterVideo);
+        mRecyclerViewVideo.addOnItemTouchListener(new RecyclerItemClickListener(SearchableActivity.this, recyclerViewVideoListener));
+
+        mRecyclerViewArticle.setLayoutManager(mLayoutManagerA);
+        mRecyclerViewArticle.setAdapter(mAdapterArticle);
 
         handleSearch( getIntent() );
     }
@@ -168,20 +200,100 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     private void getAppList(final String q){
-        StreamPlayHelper mHelper = new StreamPlayHelper(this);
-        SQLiteDatabase database = mHelper.getWritableDatabase();
+        try{
+            videos = new ArrayList<>();
+            SQLiteDatabase database = Applicattion.applicationHelper.getWritableDatabase();
+
+            String[] query = { "%" + q.toLowerCase() + "%" };
+
+            videos = getVideos(query, database);
+            articles = getArticles(query, database);
+
+            mNoVideoText.setVisibility((videos.size() == 0) ? View.VISIBLE : View.GONE);
+            if(videos.size() > 0){
+                mAdapterVideo.changeData(videos);
+            }else{ mAdapterVideo.changeData(new ArrayList<Video>()); }
+
+            mNoArticleText.setVisibility((articles.size() == 0) ? View.VISIBLE : View.GONE);
+            if(articles.size() > 0){
+                mAdapterArticle.changeData(articles);
+            }else{ mAdapterArticle.changeData(new ArrayList<Article>()); }
+
+        }catch (Throwable t){
+            String s = "";
+        }
+
     }
 
-    public String getAppNameFromPkgName(String Packagename) {
-        try {
-            PackageManager packageManager = getPackageManager();
-            ApplicationInfo info = packageManager.getApplicationInfo(Packagename, PackageManager.GET_META_DATA);
-            String appName = (String) packageManager.getApplicationLabel(info);
-            return appName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return Packagename;
-        }
+    public List<Video> getVideos(String[] query, SQLiteDatabase database) {
+        List<Video> videos = new ArrayList<>();
+        try{
+            Cursor videoCursor = VideoContract.find(query, database);
+
+            if(videoCursor != null){
+                if(videoCursor.moveToFirst()){
+                    do{
+                        videos.add(
+                                new Video(
+                                        videoCursor.getInt(videoCursor.getColumnIndex(VideoContract.VideoEntry.COLUMN_NAME_ID)),
+                                        videoCursor.getString(videoCursor.getColumnIndex(VideoContract.VideoEntry.COLUMN_NAME_TITLE)),
+                                        videoCursor.getString(videoCursor.getColumnIndex(VideoContract.VideoEntry.COLUMN_NAME_DESCRIPTION)),
+                                        videoCursor.getString(videoCursor.getColumnIndex(VideoContract.VideoEntry.COLUMN_NAME_CATEGORY)),
+                                        videoCursor.getString(videoCursor.getColumnIndex(VideoContract.VideoEntry.COLUMN_NAME_IMAGE_URL)),
+                                        videoCursor.getString(videoCursor.getColumnIndex(VideoContract.VideoEntry.COLUMN_NAME_VIDEO_URL)),
+                                        null
+                                )
+                        );
+                    }while (videoCursor.moveToNext());
+                }
+            }
+        }catch (Throwable t){}
+
+        return videos;
     }
+
+    public List<Article> getArticles(String[] query, SQLiteDatabase database) {
+        List<Article> articles = new ArrayList<>();
+        try{
+            Cursor articleCursor = ArticleContract.find(query, database);
+
+            if(articleCursor != null){
+                if(articleCursor.moveToFirst()){
+                    do{
+                        articles.add(
+                                new Article(
+                                        articleCursor.getInt(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_ID)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_AUTHOR)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_CATEGORY)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_TITLE)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_DESCRIPTION)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_IMAGE)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_ARTICLE_URL)),
+                                        articleCursor.getString(articleCursor.getColumnIndex(ArticleContract.ArticleEntry.COLUMN_NAME_PUBLISHED_AT))
+                                )
+                        );
+                    }while (articleCursor.moveToNext());
+                }
+            }
+        }catch (Throwable t){}
+        return articles;
+    }
+
+
+    /***
+     * Vídeo Touch Listner
+     */
+    RecyclerItemClickListener.OnItemClickListener recyclerViewVideoListener = new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            if(videos != null){
+                if(videos.size() > 0){
+                    Intent intent = new Intent(SearchableActivity.this, VideoActivity.class);
+                    intent.putExtra(Constant.BUNDLE_HOME_VIDEO_DATA, videos.get(position));
+                    startActivity(intent);
+                }
+            }
+        }
+    };
 
 }

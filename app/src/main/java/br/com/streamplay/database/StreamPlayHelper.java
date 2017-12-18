@@ -10,18 +10,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class StreamPlayHelper extends SQLiteOpenHelper{
 
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 3;
     public static final String DB_NAME = "StreamPlay.db";
 
     public static final String TEXT_TYPE = " TEXT";
     public static final String INTEGER_TYPE = " INTEGER";
     public static final String COMMA_SEP = ",";
-    public static final String SQL_CREATE_ENTRIES = VideoContract.VideoEntry.CREATE_ENTRY +
-                                                    ArticleContract.ArticleEntry.CREATE_ENTRY +
-                                                    FavoriteContract.FavoriteEntry.CREATE_ENTRY;
 
-    public static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + FavoriteContract.FavoriteEntry.TABLE_NAME;
+    public static final String[] SQL_DELETE_ENTRIES = {
+            "DROP TABLE IF EXISTS " + VideoContract.VideoEntry.TABLE_NAME,
+            "DROP TABLE IF EXISTS " + ArticleContract.ArticleEntry.TABLE_NAME,
+            "DROP TABLE IF EXISTS " + FavoriteContract.FavoriteEntry.TABLE_NAME
+    };
+
 
     public StreamPlayHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -29,12 +30,16 @@ public class StreamPlayHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
+        sqLiteDatabase.execSQL(VideoContract.VideoEntry.CREATE_ENTRY);
+        sqLiteDatabase.execSQL(ArticleContract.ArticleEntry.CREATE_ENTRY);
+        sqLiteDatabase.execSQL(FavoriteContract.FavoriteEntry.CREATE_ENTRY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES);
+        sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES[0]);
+        sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES[1]);
+        sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES[2]);
         onCreate(sqLiteDatabase);
     }
 

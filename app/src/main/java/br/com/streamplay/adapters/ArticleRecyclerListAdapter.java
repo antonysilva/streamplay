@@ -17,6 +17,7 @@ import java.util.List;
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.models.Article;
+import br.com.streamplay.models.Video;
 import br.com.streamplay.ui.article.ArticleActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -100,6 +101,11 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public void changeData(List<Article> articles){
+        mArticles = articles;
+        notifyDataSetChanged();
     }
 
 
