@@ -3,13 +3,18 @@ package br.com.streamplay.ui.video;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import java.util.concurrent.TimeUnit;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
@@ -26,10 +31,15 @@ public class VideoPlayerActivity extends AppCompatActivity {
     ImageView mPlayOrPauseButtom;
     @BindView(R.id.progress)
     ProgressBar mProgress;
+    @BindView(R.id.video_time)
+    TextView mVideoTime;
+    @BindView(R.id.video_progress)
+    SeekBar mVideoProgress;
 
     private Uri mUri;
     private Video mVideo;
     private int mStopTime;
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
         mPlayOrPauseButtom.performClick();
+        mVideoProgress.setOnSeekBarChangeListener(seekBarChangeListener);
     }
 
     @OnClick(R.id.btn_play_and_pause)
@@ -79,6 +90,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
                 mVideoView.seekTo(mStopTime);
                 mVideoView.start();
                 mPlayOrPauseButtom.setSelected(mVideoView.isPlaying());
+                showDuration(mVideoView.getDuration());
             }
         });
     }
@@ -87,4 +99,53 @@ public class VideoPlayerActivity extends AppCompatActivity {
     public void openFullScreemMode(){
         finish();
     }
+
+    protected void showDuration(int duration){
+        String time = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration),
+                TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
+
+        mVideoProgress.setProgress(mVideoView.getCurrentPosition());
+        mVideoProgress.setMax(mVideoView.getDuration());
+
+        mVideoTime.setText(time);
+        updateProgress();
+    }
+
+    private void updateProgress(){
+        mHandler.postDelayed(runnable, 100);
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if(mVideoView.isPlaying()){
+                mVideoProgress.setProgress(mVideoView.getCurrentPosition());
+                String time = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(mVideoView.getCurrentPosition()),
+                        TimeUnit.MILLISECONDS.toSeconds(mVideoView.getCurrentPosition()) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mVideoView.getCurrentPosition())));
+                mVideoTime.setText(time);
+                mHandler.postDelayed(this, 100);
+            }
+        }
+    };
+
+    /***
+     * SeekBar Listener
+     */
+
+    SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            mVideoView.seekTo(mVideoProgress.getProgress());
+            updateProgress();
+        }
+    };
 }

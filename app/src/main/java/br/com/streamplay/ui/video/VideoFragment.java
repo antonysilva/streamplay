@@ -191,6 +191,10 @@ public class VideoFragment extends Fragment{
         public void run() {
             if(mVideoView.isPlaying()){
                 mVideoProgress.setProgress(mVideoView.getCurrentPosition());
+                String time = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(mVideoView.getCurrentPosition()),
+                        TimeUnit.MILLISECONDS.toSeconds(mVideoView.getCurrentPosition()) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mVideoView.getCurrentPosition())));
+
+                mVideoTime.setText(time);
                 mHandler.postDelayed(this, 100);
             }
         }

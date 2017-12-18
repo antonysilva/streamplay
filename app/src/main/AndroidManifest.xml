@@ -48,7 +48,8 @@
         </activity>
         <activity
             android:name=".ui.video.VideoPlayerActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.splashscreem.SplashScreemActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
