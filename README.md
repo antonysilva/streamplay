@@ -7,7 +7,7 @@ Apliativo de entretenimento que possibilita o usuário a assistir vídeos e ler 
 Bibliotecas de HTTP Client para Android e Java
 
 #### Picasso
-Biblioteca para download de imagens da internet e cache das imagens
+Biblioteca para download de imagens da internet e cache das imagens, para melhor experiência do usuário.
 
 #### ButterKnith
 Biblioteca quutiliza de anotações para realizar Binding de Campos e Métodos.
