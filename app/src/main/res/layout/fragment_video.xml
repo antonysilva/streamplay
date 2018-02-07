@@ -37,46 +37,50 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/surface_controller"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingBottom="5dp"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/video_view"
-            app:layout_constraintStart_toStartOf="@+id/video_view"
             android:background="@drawable/bg_media_controller">
 
             <ImageView
                 android:id="@+id/btn_play_and_pause"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_video_view_play"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/video_progress"/>
 
             <SeekBar
                 android:id="@+id/video_progress"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="110dp"
-                android:layout_centerVertical="true"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/video_time"
+                app:layout_constraintStart_toEndOf="@+id/btn_play_and_pause"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/video_time"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
                 android:layout_marginEnd="60dp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/video_progress"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2:00" />
 
             <ImageView
                 android:id="@+id/btn_full_screem"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_full_size_video_controller"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/video_time"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </android.support.constraint.ConstraintLayout>
 
@@ -86,17 +90,81 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:text="Video Teste"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
             app:layout_constraintTop_toBottomOf="@+id/surface_controller"
-            app:layout_constraintStart_toStartOf="@+id/surface_controller"/>
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Video Teste"/>
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintStart_toStartOf="@+id/title" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Descrição"/>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/favorite_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/btn_favorite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="@dimen/margin_start"
+                android:layout_marginEnd="@dimen/margin_end"
+                android:src="@drawable/ic_favorite"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/btn_share"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="@dimen/margin_start"
+                android:layout_marginEnd="@dimen/margin_end"
+                android:src="@drawable/ic_menu_share"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_favorite"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tx_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:text="@string/suggestions_videos"
+            app:layout_constraintTop_toBottomOf="@+id/favorite_container"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
+            app:layout_constraintTop_toBottomOf="@+id/tx_suggestion"
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 
