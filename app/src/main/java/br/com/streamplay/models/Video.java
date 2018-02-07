@@ -2,6 +2,8 @@ package br.com.streamplay.models;
 
 import android.support.annotation.Nullable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,13 +13,21 @@ import java.util.List;
 
 public class Video implements Serializable{
 
-    private int id;
-    private String title;
-    private String description;
-    private String category;
-    private String image_url;
-    private String video_url;
-    private List<String> tags;
+    @SerializedName("id")
+    int id;
+    @SerializedName("title")
+    String title;
+    @SerializedName("description")
+    String description;
+    @SerializedName("category")
+    String category;
+    @SerializedName("image_url")
+    String image_url;
+    @SerializedName("video_url")
+    String video_url;
+    @SerializedName("tags")
+    List<String> tags;
+
 
     public Video(){}
 
