@@ -1,7 +1,7 @@
 package br.com.streamplaydata.services;
 
 import java.util.List;
-import br.com.streamplaydata.models.Video;
+import br.com.streamplaydata.video.model.Video;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

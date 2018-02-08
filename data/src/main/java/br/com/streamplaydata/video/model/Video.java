@@ -1,4 +1,4 @@
-package br.com.streamplaydata.models;
+package br.com.streamplaydata.video.model;
 
 import com.google.gson.annotations.SerializedName;
 
