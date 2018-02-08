@@ -85,7 +85,7 @@ public class CategoryFragment extends Fragment {
     }
 
     /***
-     * Article Callback
+     * ArticleModel Callback
      */
     IArticleCallback articleCallback = new IArticleCallback() {
         @Override
@@ -101,7 +101,7 @@ public class CategoryFragment extends Fragment {
     };
 
     /***
-     * Video Callback
+     * VideoModel Callback
      */
     IVideoCallback videoCallback = new IVideoCallback() {
         @Override

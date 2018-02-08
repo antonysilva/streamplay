@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 
 @RunWith(AndroidJUnit4.class)
-public class ArticleInstrumentdTest {
+public class ArticleModelInstrumentdTest {
 
     @Test
     public void getShortDescription() throws Exception {

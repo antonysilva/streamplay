@@ -11,8 +11,8 @@
     <string name="action_favorite">Favoritos</string>
     <string name="search_hint">Procurar</string>
     <string name="suggestions_videos">Sugestão</string>
-    <string name="videos">Vídeos</string>
-    <string name="articles">Artigos</string>
+    <string name="videoModels">Vídeos</string>
+    <string name="articleModels">Artigos</string>
     <string name="no_video_found">Nenhum vídeo encontrado</string>
     <string name="no_article_found">Nenhum Artigo encontrado</string>
 

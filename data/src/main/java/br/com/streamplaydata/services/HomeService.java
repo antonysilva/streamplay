@@ -1,6 +1,6 @@
 package br.com.streamplaydata.services;
 
-import br.com.streamplaydata.breafing.model.Briefing;
+import br.com.streamplaydata.breafing.model.BriefingModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -11,6 +11,6 @@ import retrofit2.http.GET;
 public interface HomeService {
 
     @GET("/home_brief")
-    Call<Briefing> getHomeData();
+    Call<BriefingModel> getHomeData();
 
 }

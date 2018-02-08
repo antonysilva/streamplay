@@ -1,18 +1,28 @@
-package br.com.streamplaydata.breafing.model;
+package br.com.streamplaydomain.briefing.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-import br.com.streamplaydata.article.model.Article;
-import br.com.streamplaydata.video.model.Video;
+import br.com.streamplaydomain.article.Article;
+import br.com.streamplaydomain.video.Video;
 
 /**
- * Created by Antony Silva on 08/02/2018.
+ * Created by Antony Silva on 07/02/2018.
  */
 
-public class Briefing {
+public class Briefing implements Serializable{
 
     private List<Video> videos;
     private List<Article> articles;
+
+    public Briefing(){
+
+    }
+
+    public Briefing(List<Video> videos, List<Article> articles) {
+        this.videos = videos;
+        this.articles = articles;
+    }
 
     public List<Video> getVideos() {
         return videos;
@@ -29,5 +39,4 @@ public class Briefing {
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
-
 }

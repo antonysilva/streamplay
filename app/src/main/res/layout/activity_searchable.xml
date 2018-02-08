@@ -25,7 +25,7 @@
                 android:drawableStart="@drawable/ic_video"
                 android:drawablePadding="5dp"
                 android:layout_margin="10dp"
-                android:text="@string/videos"
+                android:text="@string/videoModels"
                 style="@style/TextViewTitle"/>
 
             <TextView
@@ -46,7 +46,7 @@
                 android:drawableStart="@drawable/ic_article"
                 android:drawablePadding="5dp"
                 android:layout_margin="10dp"
-                android:text="@string/articles"
+                android:text="@string/articleModels"
                 style="@style/TextViewTitle"/>
 
             <TextView

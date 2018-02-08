@@ -1,4 +1,4 @@
-package br.com.streamplaydomain.video.interactors;
+package br.com.streamplaydomain.video.usecase;
 
 import java.util.List;
 

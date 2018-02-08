@@ -1,7 +1,7 @@
 package br.com.streamplaydata.services;
 
 import java.util.List;
-import br.com.streamplaydata.video.model.Video;
+import br.com.streamplaydata.video.model.VideoModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,6 +13,6 @@ import retrofit2.http.Path;
 public interface VideoService {
 
     @GET("/videos/category/{category}")
-    Call<List<Video>> findByCategory(@Path("category") String category);
+    Call<List<VideoModel>> findByCategory(@Path("category") String category);
 
 }

@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import br.com.streamplaydata.article.client.ArticleIterator;
-import br.com.streamplaydata.article.model.Article;
+import br.com.streamplaydata.article.model.ArticleIterator;
+import br.com.streamplaydata.article.model.ArticleModel;
+import br.com.streamplaydomain.article.Article;
 
 /**
  * Created by Antony Silva on 08/02/2018.
  */
 
-public class ArticleByCategoryMapper implements ArticleByCategoryMapperImpl {
+public class ArticleMapper implements ArticleMapperContract {
 
     @Override
-    public List<Article> convert(Article[] articles) {
+    public List<Article> convertListFromDataToDomain(ArticleModel[] articles) {
         List<Article> articleList = new ArrayList<>();
         Iterator articleInterator = new ArticleIterator(articles);
 

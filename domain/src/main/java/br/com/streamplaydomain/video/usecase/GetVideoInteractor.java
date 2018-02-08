@@ -1,4 +1,4 @@
-package br.com.streamplaydomain.video.interactors;
+package br.com.streamplaydomain.video.usecase;
 
 import br.com.streamplaydomain.base.Interactor;
 import br.com.streamplaydomain.video.Video;

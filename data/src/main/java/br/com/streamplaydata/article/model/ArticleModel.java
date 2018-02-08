@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Antony Silva on 07/02/2018.
  */
 
-public class Article {
+public class ArticleModel {
 
     @SerializedName("id")
     private int id;
@@ -25,10 +25,10 @@ public class Article {
     @SerializedName("published_at")
     private String published_at;
 
-    public Article() {
+    public ArticleModel() {
     }
 
-    public Article(int id, String author, String category, String title, String description, String image, String article_url, String published_at) {
+    public ArticleModel(int id, String author, String category, String title, String description, String image, String article_url, String published_at) {
         this.id = id;
         this.author = author;
         this.category = category;

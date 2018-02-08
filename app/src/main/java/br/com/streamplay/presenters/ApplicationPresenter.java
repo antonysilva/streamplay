@@ -2,6 +2,8 @@ package br.com.streamplay.presenters;
 
 import java.util.concurrent.TimeUnit;
 
+import br.com.streamplaydomain.base.Executor;
+import br.com.streamplaydomain.base.MainThread;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -13,25 +15,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApplicationPresenter {
 
-    private static String URL_BASE = "https://private-96e6c4-streamplay1.apiary-mock.com";
+    protected Executor mExecutor;
+    protected MainThread mMainThread;
 
-    public Retrofit getConection(){
-        Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(URL_BASE)
-                            .client(client)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-
-        return retrofit;
+    public ApplicationPresenter(Executor executor, MainThread mainThread) {
+        mExecutor = executor;
+        mMainThread = mainThread;
     }
-
-    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BASIC);
-    OkHttpClient client = new OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .readTimeout(60 , TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
-            .build();
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackgroundApp"
-    tools:context=".ui.video.VideoActivity">
+    tools:context=".ui.videoModel.VideoActivity">
 
     <include
         layout="@layout/app_bar_default"

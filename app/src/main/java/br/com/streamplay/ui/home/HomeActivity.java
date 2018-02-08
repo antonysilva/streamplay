@@ -3,11 +3,8 @@ package br.com.streamplay.ui.home;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,14 +19,15 @@ import br.com.streamplay.R;
 import br.com.streamplay.adapters.HomeViewPagerAdapter;
 import br.com.streamplay.callbacks.IHomeCallback;
 import br.com.streamplay.models.HomeData;
-import br.com.streamplay.presenters.HomePresenter;
 import br.com.streamplay.ui.category.CategoryActivity;
 import br.com.streamplay.ui.search.SearchableActivity;
+import br.com.streamplaydomain.briefing.interactors.BriefingInteractorCallback;
+import br.com.streamplaydomain.briefing.model.Briefing;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, BriefingInteractorCallback {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -52,8 +50,6 @@ public class HomeActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
         mTabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#ffffff"));
-
-        mHomePresenter = mHomePresenter.getInstance();
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -148,24 +144,18 @@ public class HomeActivity extends AppCompatActivity
      * List all data home
      */
     private void getHomeData(){
-        mHomePresenter.setHomeServiceCallback(mHomeCallback);
-        mHomePresenter.getHomeData();
+        mHomePresenter.getAllBriefingData();
     }
 
-    /***
-     * HOME SERVICE CALLBACK
-     */
-    IHomeCallback mHomeCallback = new IHomeCallback() {
-        @Override
-        public void onSuccess(HomeData data) {
-            HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager(), data);
-            mViewPager.setAdapter(adapter);
-            mTabLayout.setupWithViewPager(mViewPager);
-        }
+    @Override
+    public void onGetBriefingaDataCallback(Briefing briefing) {
+        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager(), briefing);
+        mViewPager.setAdapter(adapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+    }
 
-        @Override
-        public void onFailure(Throwable t) {
-            String s = "aa";
-        }
-    };
+    @Override
+    public void onGetBriefingaDataFailure(Throwable throwable) {
+
+    }
 }

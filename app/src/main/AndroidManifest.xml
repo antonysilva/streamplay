@@ -22,11 +22,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".ui.video.VideoActivity"
+            android:name=".ui.videoModel.VideoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.article.ArticleActivity"
+            android:name=".ui.articleModel.ArticleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -47,7 +47,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".ui.video.VideoPlayerActivity"
+            android:name=".ui.videoModel.VideoPlayerActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.splashscreem.SplashScreemActivity"

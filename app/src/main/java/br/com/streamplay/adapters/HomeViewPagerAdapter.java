@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import br.com.streamplay.Constant;
 import br.com.streamplay.models.HomeData;
 import br.com.streamplay.ui.home.HomePagerFragment;
+import br.com.streamplaydomain.briefing.model.Briefing;
 
 /**
  * Created by Antony on 08/12/2017.
@@ -18,9 +19,9 @@ import br.com.streamplay.ui.home.HomePagerFragment;
 public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 
     String[] mPagerTitle = {"Vídeo", "Artigo"};
-    HomeData mHomeData;
+    Briefing mHomeData;
 
-    public HomeViewPagerAdapter(FragmentManager fm, HomeData homeData) {
+    public HomeViewPagerAdapter(FragmentManager fm, Briefing homeData) {
         super(fm);
         mHomeData = homeData;
     }
