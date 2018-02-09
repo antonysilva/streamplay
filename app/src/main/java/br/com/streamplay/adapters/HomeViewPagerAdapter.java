@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import br.com.streamplay.Constant;
-import br.com.streamplay.models.HomeData;
 import br.com.streamplay.ui.home.HomePagerFragment;
 import br.com.streamplaydomain.briefing.model.Briefing;
 

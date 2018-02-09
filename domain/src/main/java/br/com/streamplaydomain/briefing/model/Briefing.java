@@ -1,6 +1,7 @@
 package br.com.streamplaydomain.briefing.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.streamplaydomain.article.Article;
@@ -16,7 +17,8 @@ public class Briefing implements Serializable{
     private List<Article> articles;
 
     public Briefing(){
-
+        videos = new ArrayList<>();
+        articles = new ArrayList<>();
     }
 
     public Briefing(List<Video> videos, List<Article> articles) {

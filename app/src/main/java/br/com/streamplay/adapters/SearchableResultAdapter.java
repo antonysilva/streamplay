@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.com.streamplay.models.HomeData;
+import br.com.streamplaydomain.briefing.model.Briefing;
 
 /**
  * Created by Antony on 10/12/2017.
@@ -13,9 +13,9 @@ import br.com.streamplay.models.HomeData;
 
 public class SearchableResultAdapter extends RecyclerView.Adapter<SearchableResultAdapter.ViewHolder> {
 
-    HomeData mListData;
+    Briefing mListData;
 
-    public SearchableResultAdapter(Context context, HomeData data){
+    public SearchableResultAdapter(Context context, Briefing data){
 
     }
 

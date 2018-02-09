@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.models.Video;
+import br.com.streamplaydomain.video.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,7 +49,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mVideo = (Video) getIntent().getSerializableExtra(Constant.BUNDLE_HOME_VIDEO_DATA);
-        mUri = Uri.parse(mVideo.getVideoUrl());
+        mUri = Uri.parse(mVideo.getVideo_url());
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE

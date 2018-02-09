@@ -13,8 +13,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.streamplay.R;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,11 +22,11 @@ import butterknife.ButterKnife;
 
 public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecyclerListAdapter.ViewHolder> {
 
-    private List<Video> mVideos;
+    private List<br.com.streamplaydomain.video.Video> mVideos;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public VideoRecyclerListAdapter(Context context, List<Video> videos){
+    public VideoRecyclerListAdapter(Context context, List<br.com.streamplaydomain.video.Video> videos){
         mVideos = videos;
         mContext = context;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -42,10 +40,10 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
     @Override
     public void onBindViewHolder(VideoRecyclerListAdapter.ViewHolder holder, int position) {
         holder.mTitle.setText(mVideos.get(position).getTitle());
-        holder.mDescription.setText(mVideos.get(position).getShortDescription());
+        holder.mDescription.setText(mVideos.get(position).getDescription());
         Picasso.with(mContext)
                 .load(mVideos.get(position)
-                        .getImageUrl())
+                        .getImage_url())
                 .into(holder.mImage);
     }
 
@@ -69,7 +67,7 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
         }
     }
 
-    public void changeData(List<Video> videos){
+    public void changeData(List<br.com.streamplaydomain.video.Video> videos){
         mVideos = videos;
         notifyDataSetChanged();
     }

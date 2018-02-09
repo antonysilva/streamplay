@@ -31,14 +31,14 @@ public class BriefingClient extends RetrofitBase {
                     callback.onResponse(briefingMapper.fromDataToDomain(response.body()));
 //                    mHomeServiceCallback.onSuccess(response.body());
                 }else{
-                    callback.onFailure(null);
+                    callback.onError(null);
 //                    mHomeServiceCallback.onFailure(null);
                 }
             }
 
             @Override
             public void onFailure(Call<BriefingModel> call, Throwable t) {
-                callback.onFailure(t);
+                callback.onError(t);
 //                mHomeServiceCallback.onFailure(t);
             }
         });

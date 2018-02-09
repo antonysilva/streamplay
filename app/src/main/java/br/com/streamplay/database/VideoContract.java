@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import br.com.streamplay.models.Video;
+import br.com.streamplaydomain.video.Video;
 
 /**
  * Created by Antony on 17/12/2017.
@@ -54,8 +54,8 @@ public class VideoContract {
         values.put(VideoEntry.COLUMN_NAME_TITLE, video.getTitle());
         values.put(VideoEntry.COLUMN_NAME_CATEGORY, video.getCategory());
         values.put(VideoEntry.COLUMN_NAME_DESCRIPTION, video.getDescription());
-        values.put(VideoEntry.COLUMN_NAME_IMAGE_URL, video.getImageUrl());
-        values.put(VideoEntry.COLUMN_NAME_VIDEO_URL, video.getVideoUrl());
+        values.put(VideoEntry.COLUMN_NAME_IMAGE_URL, video.getImage_url());
+        values.put(VideoEntry.COLUMN_NAME_VIDEO_URL, video.getVideo_url());
 
         long newRowId = database.insert(VideoEntry.TABLE_NAME, null, values);
         return newRowId;

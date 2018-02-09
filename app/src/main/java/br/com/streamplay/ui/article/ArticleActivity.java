@@ -8,9 +8,8 @@ import android.view.MenuItem;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.Video;
 import br.com.streamplay.ui.video.VideoFragment;
+import br.com.streamplaydomain.article.Article;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -30,7 +29,7 @@ public class ArticleActivity extends AppCompatActivity {
 
         mArticle = (Article) getIntent().getSerializableExtra(Constant.BUNDLE_ARTICLE_DATA);
 
-        setTitle(mArticle.getShortTitle());
+        setTitle(mArticle.getTitle());
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

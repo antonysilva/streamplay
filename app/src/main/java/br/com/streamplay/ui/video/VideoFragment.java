@@ -28,9 +28,9 @@ import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.adapters.VideoRecyclerListAdapter;
 import br.com.streamplay.callbacks.IVideoCallback;
-import br.com.streamplay.models.Video;
 import br.com.streamplay.presenters.VideoPresenter;
 import br.com.streamplay.util.RecyclerItemClickListener;
+import br.com.streamplaydomain.video.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -79,7 +79,7 @@ public class VideoFragment extends Fragment{
         mVideo = (Video) getArguments().getSerializable(Constant.BUNDLE_HOME_VIDEO_DATA);
         mTitle.setText(mVideo.getTitle());
         mDescription.setText(mVideo.getDescription());
-        mUri = Uri.parse(mVideo.getVideoUrl());
+        mUri = Uri.parse(mVideo.getVideo_url());
 
         initializeRecyclerView();
 

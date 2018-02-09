@@ -18,11 +18,11 @@ import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
 import br.com.streamplay.adapters.VideoRecyclerListAdapter;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.HomeData;
 import br.com.streamplay.ui.article.ArticleActivity;
 import br.com.streamplay.ui.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
+import br.com.streamplaydata.breafing.model.BriefingModel;
+import br.com.streamplaydomain.briefing.model.Briefing;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,7 +35,7 @@ public class HomePagerFragment extends Fragment {
     @BindView(R.id.reciylerView)
     RecyclerView mRecyclerView;
 
-   HomeData mData;
+   Briefing mData;
    int mPagerPosition;
 
     @Nullable
@@ -47,7 +47,7 @@ public class HomePagerFragment extends Fragment {
 
         Bundle args = getArguments();
 
-        mData = (HomeData) args.getSerializable(Constant.BUNDLE_HOME_DATA);
+        mData = (Briefing) args.getSerializable(Constant.BUNDLE_HOME_DATA);
         mPagerPosition =  args.getInt(Constant.BUNDLE_PAGER_POSITION);
 
         initializeView();

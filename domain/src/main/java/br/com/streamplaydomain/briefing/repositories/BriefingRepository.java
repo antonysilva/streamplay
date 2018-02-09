@@ -1,6 +1,7 @@
 package br.com.streamplaydomain.briefing.repositories;
 
-import br.com.streamplaydomain.briefing.interactors.BriefingInteractorCallback;
+import br.com.streamplaydomain.briefing.callbacks.GetBriefingDataCallback;
+import br.com.streamplaydomain.briefing.model.Briefing;
 
 /**
  * Created by Antony Silva on 08/02/2018.
@@ -8,6 +9,6 @@ import br.com.streamplaydomain.briefing.interactors.BriefingInteractorCallback;
 
 public interface BriefingRepository {
 
-    void getBriefingData(final BriefingInteractorCallback callback);
+    void getBriefingData(GetBriefingDataCallback callback);
 
 }

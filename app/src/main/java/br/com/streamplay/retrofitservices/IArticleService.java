@@ -2,7 +2,7 @@ package br.com.streamplay.retrofitservices;
 
 import java.util.List;
 
-import br.com.streamplay.models.Article;
+import br.com.streamplaydomain.article.Article;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

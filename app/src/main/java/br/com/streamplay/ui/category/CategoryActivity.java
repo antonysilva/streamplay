@@ -24,8 +24,6 @@ import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
 import br.com.streamplay.adapters.VideoRecyclerListAdapter;
 import br.com.streamplay.callbacks.IArticleCallback;
 import br.com.streamplay.callbacks.IVideoCallback;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.Video;
 import br.com.streamplay.presenters.ArticlePresenter;
 import br.com.streamplay.presenters.VideoPresenter;
 import br.com.streamplay.ui.video.VideoActivity;

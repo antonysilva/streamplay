@@ -18,7 +18,7 @@ import android.widget.ProgressBar;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.models.Article;
+import br.com.streamplaydomain.article.Article;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

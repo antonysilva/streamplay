@@ -1,10 +1,12 @@
 package br.com.streamplaydomain.article;
 
+import java.io.Serializable;
+
 /**
  * Created by Antony Silva on 07/02/2018.
  */
 
-public class Article {
+public class Article implements Serializable{
 
     private int id;
     private String author;

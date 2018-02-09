@@ -16,11 +16,11 @@ import br.com.streamplay.R;
 import br.com.streamplay.callbacks.IHomeCallback;
 import br.com.streamplay.database.ArticleContract;
 import br.com.streamplay.database.VideoContract;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.HomeData;
-import br.com.streamplay.models.Video;
-import br.com.streamplay.ui.home.HomePresenter;
+import br.com.streamplay.presenters.home.HomePresenter;
 import br.com.streamplay.ui.home.HomeActivity;
+import br.com.streamplaydomain.article.Article;
+import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.video.Video;
 
 /**
  * Created by Antony on 17/12/2017.
@@ -35,15 +35,16 @@ public class SplashScreemFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_splash_screem, container, false);
 
+        startActivity(new Intent(getContext(), HomeActivity.class));
 
-        mPresenter = HomePresenter.getInstance();
-        mPresenter.setHomeServiceCallback(homeCallback);
-        mPresenter.getHomeData();
+//        mPresenter = HomePresenter.getInstance();
+//        mPresenter.setHomeServiceCallback(homeCallback);
+//        mPresenter.getHomeData();
 
         return view;
     }
 
-    public void insertData(HomeData data){
+    public void insertData(Briefing data){
         try{
             SQLiteDatabase database = Applicattion.applicationHelper.getWritableDatabase();
 
@@ -73,18 +74,18 @@ public class SplashScreemFragment extends Fragment {
      * Callback
      */
 
-    IHomeCallback homeCallback = new IHomeCallback() {
-        @Override
-        public void onSuccess(HomeData data) {
-            insertData(data);
-            openHome();
-        }
-
-        @Override
-        public void onFailure(Throwable t) {
-            if(t instanceof java.net.ConnectException){
-                mPresenter.getHomeData();
-            }
-        }
-    };
+//    IHomeCallback homeCallback = new IHomeCallback() {
+//        @Override
+//        public void onSuccess(HomeData data) {
+//            insertData(data);
+//            openHome();
+//        }
+//
+//        @Override
+//        public void onFailure(Throwable t) {
+//            if(t instanceof java.net.ConnectException){
+//                mPresenter.getHomeData();
+//            }
+//        }
+//    };
 }

@@ -23,7 +23,7 @@ public class VideoMapper implements VideoMapperContract{
         Iterator videoIterator = new VideoIterator(videoModels);
 
         while(videoIterator.hasNext()){
-            Video video = (Video) videoIterator.next();
+            VideoModel video = (VideoModel) videoIterator.next();
 
             int id = video.getId();
             String title = video.getTitle();

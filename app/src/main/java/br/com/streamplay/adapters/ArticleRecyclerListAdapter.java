@@ -16,8 +16,6 @@ import java.util.List;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.Video;
 import br.com.streamplay.ui.article.ArticleActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,11 +26,11 @@ import butterknife.ButterKnife;
 
 public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRecyclerListAdapter.ViewHolder>{
 
-    private List<Article> mArticles;
+    private List<br.com.streamplaydomain.article.Article> mArticles;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public ArticleRecyclerListAdapter(Context context, List<Article> articles){
+    public ArticleRecyclerListAdapter(Context context, List<br.com.streamplaydomain.article.Article> articles){
         mArticles = articles;
         mContext = context;
         mInflater = (LayoutInflater) context.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
@@ -69,8 +67,8 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         holder.mFavirite.setOnClickListener(listenerFvorite);
 
         holder.mAuthor.setText(mArticles.get(position).getAuthor());
-        holder.mTitle.setText(mArticles.get(position).getShortTitle());
-        holder.mDescription.setText(mArticles.get(position).getShortDescription());
+        holder.mTitle.setText(mArticles.get(position).getTitle());
+        holder.mDescription.setText(mArticles.get(position).getDescription());
         Picasso.with(mContext)
                .load(mArticles.get(position)
                .getImage())
@@ -103,7 +101,7 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         }
     }
 
-    public void changeData(List<Article> articles){
+    public void changeData(List<br.com.streamplaydomain.article.Article> articles){
         mArticles = articles;
         notifyDataSetChanged();
     }

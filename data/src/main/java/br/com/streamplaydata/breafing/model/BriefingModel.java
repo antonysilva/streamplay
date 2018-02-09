@@ -11,9 +11,9 @@ import br.com.streamplaydata.video.model.VideoModel;
 
 public class BriefingModel {
 
-    @SerializedName("videoModels")
+    @SerializedName("videos")
     private VideoModel[] videoModels;
-    @SerializedName("articleModels")
+    @SerializedName("articles")
     private ArticleModel[] articleModels;
 
     public VideoModel[] getVideoModels() {

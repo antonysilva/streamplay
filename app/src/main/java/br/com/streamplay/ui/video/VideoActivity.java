@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.models.Video;
+import br.com.streamplaydomain.video.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

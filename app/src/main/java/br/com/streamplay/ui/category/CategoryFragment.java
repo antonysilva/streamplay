@@ -19,13 +19,12 @@ import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
 import br.com.streamplay.adapters.VideoRecyclerListAdapter;
 import br.com.streamplay.callbacks.IArticleCallback;
 import br.com.streamplay.callbacks.IVideoCallback;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.Video;
 import br.com.streamplay.presenters.ArticlePresenter;
 import br.com.streamplay.presenters.VideoPresenter;
 import br.com.streamplay.ui.article.ArticleActivity;
 import br.com.streamplay.ui.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
+import br.com.streamplaydomain.article.Article;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,8 +37,8 @@ public class CategoryFragment extends Fragment {
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
-    List<Article> mArticles;
-    List<Video> mVideos;
+    List<br.com.streamplaydomain.article.Article> mArticles;
+    List<br.com.streamplaydomain.video.Video> mVideos;
 
     String mCategory;
     String mOptions; // options: 'article' / 'video'
@@ -105,7 +104,7 @@ public class CategoryFragment extends Fragment {
      */
     IVideoCallback videoCallback = new IVideoCallback() {
         @Override
-        public void onSuccess(List<Video> videos) {
+        public void onSuccess(List<br.com.streamplaydomain.video.Video> videos) {
             mVideos = videos;
             mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), mVideos));
         }

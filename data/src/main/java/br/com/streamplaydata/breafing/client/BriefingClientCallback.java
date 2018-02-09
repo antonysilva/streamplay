@@ -9,6 +9,6 @@ import br.com.streamplaydomain.briefing.model.Briefing;
 public interface BriefingClientCallback {
 
     void onResponse(Briefing briefing);
-    void onFailure(Throwable throwable);
+    void onError(Throwable throwable);
 
 }

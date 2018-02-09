@@ -20,7 +20,7 @@ public class ArticleMapper implements ArticleMapperContract {
         Iterator articleInterator = new ArticleIterator(articles);
 
         while(articleInterator.hasNext()){
-            Article article = (Article) articleInterator.next();
+            ArticleModel article = (ArticleModel) articleInterator.next();
 
             int id = article.getId();
             String author = article.getAuthor();

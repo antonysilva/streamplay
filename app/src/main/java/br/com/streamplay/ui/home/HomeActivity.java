@@ -16,18 +16,20 @@ import android.view.MenuItem;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
+import br.com.streamplay.UIThread;
 import br.com.streamplay.adapters.HomeViewPagerAdapter;
-import br.com.streamplay.callbacks.IHomeCallback;
-import br.com.streamplay.models.HomeData;
+import br.com.streamplay.presenters.home.HomePresenter;
+import br.com.streamplay.presenters.home.HomePresenterContract;
 import br.com.streamplay.ui.category.CategoryActivity;
 import br.com.streamplay.ui.search.SearchableActivity;
-import br.com.streamplaydomain.briefing.interactors.BriefingInteractorCallback;
+import br.com.streamplaydomain.base.ThreadExecutor;
 import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydata.breafing.repositories.BriefingRepositoryImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, BriefingInteractorCallback {
+        implements NavigationView.OnNavigationItemSelectedListener, HomePresenterContract.View {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -54,8 +56,6 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        getHomeData();
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.addDrawerListener(toggle);
@@ -64,6 +64,12 @@ public class HomeActivity extends AppCompatActivity
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
+        mHomePresenter = new HomePresenter(
+                ThreadExecutor.getInstance(),
+                UIThread.getInstance(),
+                this,
+                new BriefingRepositoryImpl());
+        getHomeData();
 
     }
 
@@ -148,14 +154,9 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
-    public void onGetBriefingaDataCallback(Briefing briefing) {
+    public void getBriefingData(Briefing briefing) {
         HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager(), briefing);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
-    }
-
-    @Override
-    public void onGetBriefingaDataFailure(Throwable throwable) {
-
     }
 }

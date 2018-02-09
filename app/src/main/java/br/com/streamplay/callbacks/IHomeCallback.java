@@ -1,6 +1,6 @@
 package br.com.streamplay.callbacks;
 
-import br.com.streamplay.models.HomeData;
+import br.com.streamplaydomain.briefing.model.Briefing;
 
 /**
  * Created by Antony on 09/12/2017.
@@ -8,7 +8,7 @@ import br.com.streamplay.models.HomeData;
 
 public interface IHomeCallback {
 
-    void onSuccess(HomeData data);
+    void onSuccess(Briefing data);
     void onFailure(Throwable t);
 
 }

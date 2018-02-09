@@ -36,11 +36,11 @@ import br.com.streamplay.adapters.VideoRecyclerListAdapter;
 import br.com.streamplay.database.ArticleContract;
 import br.com.streamplay.database.StreamPlayHelper;
 import br.com.streamplay.database.VideoContract;
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.HomeData;
-import br.com.streamplay.models.Video;
 import br.com.streamplay.ui.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
+import br.com.streamplaydomain.article.Article;
+import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.video.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -63,7 +63,7 @@ public class SearchableActivity extends AppCompatActivity {
     LinearLayoutManager mLayoutManagerA;
     VideoRecyclerListAdapter mAdapterVideo;
     ArticleRecyclerListAdapter mAdapterArticle;
-    HomeData mListData;
+    Briefing mListData;
 
     List<Video> videos = new ArrayList<>();
     List<Article> articles = new ArrayList<>();

@@ -1,8 +1,9 @@
 package br.com.streamplaydomain.video;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Video {
+public class Video implements Serializable{
 
     int id;
     String title;

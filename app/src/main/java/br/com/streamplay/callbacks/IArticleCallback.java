@@ -2,8 +2,7 @@ package br.com.streamplay.callbacks;
 
 import java.util.List;
 
-import br.com.streamplay.models.Article;
-import br.com.streamplay.models.HomeData;
+import br.com.streamplaydomain.article.Article;
 
 /**
  * Created by Antony on 10/12/2017.
