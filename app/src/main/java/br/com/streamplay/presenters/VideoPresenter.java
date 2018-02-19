@@ -27,7 +27,7 @@ public class VideoPresenter extends ApplicationPresenter {
 
     public void findByCategory(String category){
 //        IVideoService service = getConection().create(IVideoService.class);
-//        Call<List<Video>> call = service.findByCategory(category);
+//        Call<List<Video>> call = service.GetArticleByCategory(category);
 //
 //        call.enqueue(new Callback<List<Video>>() {
 //            @Override

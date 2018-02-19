@@ -5,24 +5,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
 import br.com.streamplay.adapters.VideoRecyclerListAdapter;
-import br.com.streamplay.ui.article.ArticleActivity;
 import br.com.streamplay.ui.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
-import br.com.streamplaydata.breafing.model.BriefingModel;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.ui.home.HomePagerFragment;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 
 /**
  * Created by Antony on 08/12/2017.

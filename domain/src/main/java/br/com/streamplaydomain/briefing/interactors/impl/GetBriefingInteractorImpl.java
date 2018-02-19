@@ -3,10 +3,9 @@ package br.com.streamplaydomain.briefing.interactors.impl;
 import br.com.streamplaydomain.base.AbstractInteractor;
 import br.com.streamplaydomain.base.Executor;
 import br.com.streamplaydomain.base.MainThread;
-import br.com.streamplaydomain.base.ThreadExecutor;
 import br.com.streamplaydomain.briefing.callbacks.GetBriefingDataCallback;
 import br.com.streamplaydomain.briefing.interactors.GetBriefingInteractor;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 import br.com.streamplaydomain.briefing.repositories.BriefingRepository;
 
 /**

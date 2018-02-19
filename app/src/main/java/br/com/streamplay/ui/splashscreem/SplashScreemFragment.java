@@ -13,13 +13,12 @@ import android.view.ViewGroup;
 
 import br.com.streamplay.Applicattion;
 import br.com.streamplay.R;
-import br.com.streamplay.callbacks.IHomeCallback;
 import br.com.streamplay.database.ArticleContract;
 import br.com.streamplay.database.VideoContract;
 import br.com.streamplay.presenters.home.HomePresenter;
 import br.com.streamplay.ui.home.HomeActivity;
 import br.com.streamplaydomain.article.Article;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 import br.com.streamplaydomain.video.Video;
 
 /**

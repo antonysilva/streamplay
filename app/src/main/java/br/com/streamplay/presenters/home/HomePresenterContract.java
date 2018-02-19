@@ -1,6 +1,6 @@
 package br.com.streamplay.presenters.home;
 
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 
 /**
  * Created by Antony Silva on 08/02/2018.

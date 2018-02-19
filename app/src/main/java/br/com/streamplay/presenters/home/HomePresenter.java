@@ -1,14 +1,11 @@
 package br.com.streamplay.presenters.home;
 
-import android.view.View;
-
 import br.com.streamplay.presenters.ApplicationPresenter;
-import br.com.streamplaydata.breafing.client.BriefingClientCallback;
 import br.com.streamplaydomain.base.Executor;
 import br.com.streamplaydomain.base.MainThread;
 import br.com.streamplaydomain.briefing.interactors.GetBriefingInteractor;
 import br.com.streamplaydomain.briefing.interactors.impl.GetBriefingInteractorImpl;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 import br.com.streamplaydomain.briefing.repositories.BriefingRepository;
 
 /**

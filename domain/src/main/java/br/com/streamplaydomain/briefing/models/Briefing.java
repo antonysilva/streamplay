@@ -1,4 +1,4 @@
-package br.com.streamplaydomain.briefing.model;
+package br.com.streamplaydomain.briefing.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

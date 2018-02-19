@@ -1,4 +1,4 @@
-package br.com.streamplaydomain.briefing.callbacks;
+package br.com.streamplaydomain.article.calbacks;
 
 import br.com.streamplaydomain.briefing.models.Briefing;
 
@@ -6,9 +6,10 @@ import br.com.streamplaydomain.briefing.models.Briefing;
  * Created by Antony Silva on 09/02/2018.
  */
 
-public interface GetBriefingDataCallback {
+public interface GetArticleByCategory {
 
-    void onGetBriefingDataSuccess(Briefing briefing);
+    void onGetArticleByCategorySuccess(Briefing briefing);
     void onError(Throwable throwable);
+
 
 }

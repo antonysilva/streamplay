@@ -27,7 +27,7 @@ public class ArticlePresenter extends ApplicationPresenter {
 
     public void findByCategory(String category){
 //        IArticleService service = getConection().create(IArticleService.class);
-//        Call<List<Article>> call = service.findByCategory(category);
+//        Call<List<Article>> call = service.GetArticleByCategory(category);
 //
 //        call.enqueue(new Callback<List<Article>>() {
 //            @Override

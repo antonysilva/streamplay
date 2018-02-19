@@ -23,7 +23,7 @@ import br.com.streamplay.presenters.home.HomePresenterContract;
 import br.com.streamplay.ui.category.CategoryActivity;
 import br.com.streamplay.ui.search.SearchableActivity;
 import br.com.streamplaydomain.base.ThreadExecutor;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 import br.com.streamplaydata.breafing.repositories.BriefingRepositoryImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;

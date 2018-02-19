@@ -3,7 +3,7 @@ package br.com.streamplaydata.breafing.mappers;
 import br.com.streamplaydata.article.mapper.ArticleMapper;
 import br.com.streamplaydata.breafing.model.BriefingModel;
 import br.com.streamplaydata.video.mappers.VideoMapper;
-import br.com.streamplaydomain.briefing.model.Briefing;
+import br.com.streamplaydomain.briefing.models.Briefing;
 
 /**
  * Created by Antony Silva on 08/02/2018.
