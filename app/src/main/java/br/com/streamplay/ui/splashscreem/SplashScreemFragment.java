@@ -17,6 +17,7 @@ import br.com.streamplay.database.ArticleContract;
 import br.com.streamplay.database.VideoContract;
 import br.com.streamplay.presenters.home.HomePresenter;
 import br.com.streamplay.ui.home.HomeActivity;
+import br.com.streamplay.ui.login.views.LoginActivity;
 import br.com.streamplaydomain.article.Article;
 import br.com.streamplaydomain.briefing.models.Briefing;
 import br.com.streamplaydomain.video.Video;
@@ -34,7 +35,7 @@ public class SplashScreemFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_splash_screem, container, false);
 
-        startActivity(new Intent(getContext(), HomeActivity.class));
+        startActivity(new Intent(getContext(), LoginActivity.class));
 
 //        mPresenter = HomePresenter.getInstance();
 //        mPresenter.setHomeServiceCallback(homeCallback);
