@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.search.SearchableActivity">
+    tools:context=".search.SearchableActivity">
 
     <include layout="@layout/app_bar_default"/>
 

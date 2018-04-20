@@ -3,7 +3,7 @@ package br.com.streamplaydata.breafing.repositories;
 import br.com.streamplaydata.breafing.client.BriefingClient;
 import br.com.streamplaydata.breafing.client.BriefingClientCallback;
 import br.com.streamplaydomain.briefing.callbacks.GetBriefingDataCallback;
-import br.com.streamplaydomain.briefing.models.Briefing;
+import br.com.streamplaydomain.entities.Briefing;
 import br.com.streamplaydomain.briefing.repositories.BriefingRepository;
 
 /**

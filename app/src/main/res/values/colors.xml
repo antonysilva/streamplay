@@ -8,4 +8,9 @@
     <color name="colorVideoPlayer">#99000000</color>
     <color name="colorBackgroundApp">#FFFFFF</color>
     <color name="textColor">#404040</color>
+    <color name="buttonNavigateViewBackground">#8e44ad</color>
+    <color name="buttonNavigateViewTextColor">#99ffffff</color>
+    <color name="buttonNavigateViewTextColorSelected">#ffffffff</color>
+    <color name="videoNavigationColor">#99000000</color>
+
 </resources>

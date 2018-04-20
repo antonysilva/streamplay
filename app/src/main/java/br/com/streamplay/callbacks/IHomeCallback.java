@@ -1,6 +1,6 @@
 package br.com.streamplay.callbacks;
 
-import br.com.streamplaydomain.briefing.models.Briefing;
+import br.com.streamplaydomain.entities.Briefing;
 
 /**
  * Created by Antony on 09/12/2017.

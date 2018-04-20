@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.streamplay.R;
+import br.com.streamplaydomain.entities.Video;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,11 +23,11 @@ import butterknife.ButterKnife;
 
 public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecyclerListAdapter.ViewHolder> {
 
-    private List<br.com.streamplaydomain.video.Video> mVideos;
+    private List<Video> mVideos;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public VideoRecyclerListAdapter(Context context, List<br.com.streamplaydomain.video.Video> videos){
+    public VideoRecyclerListAdapter(Context context, List<Video> videos){
         mVideos = videos;
         mContext = context;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,7 +68,7 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
         }
     }
 
-    public void changeData(List<br.com.streamplaydomain.video.Video> videos){
+    public void changeData(List<Video> videos){
         mVideos = videos;
         notifyDataSetChanged();
     }

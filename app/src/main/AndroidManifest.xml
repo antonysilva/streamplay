@@ -21,27 +21,27 @@
 
 
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.video.VideoActivity"
+            android:name=".video.VideoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.article.ArticleActivity"
+            android:name=".article.ArticleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.category.CategoryActivity"
+            android:name=".category.CategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.search.SearchableActivity"
+            android:name=".search.SearchableActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustNothing">
@@ -55,12 +55,12 @@
         </activity>
 
         <activity
-            android:name=".ui.video.VideoPlayerActivity"
+            android:name=".video.VideoPlayerActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.splashscreem.SplashScreemActivity"
+            android:name=".splashscreem.SplashScreemActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -70,7 +70,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.login.views.LoginActivity"
+        <activity android:name=".login.views.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 

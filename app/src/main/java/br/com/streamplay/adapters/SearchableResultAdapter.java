@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.com.streamplaydomain.briefing.models.Briefing;
+import br.com.streamplaydomain.entities.Briefing;
 
 /**
  * Created by Antony on 10/12/2017.

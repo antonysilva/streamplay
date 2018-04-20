@@ -1,5 +1,5 @@
 package br.com.streamplay.retrofitservices;
-import br.com.streamplaydomain.briefing.models.Briefing;
+import br.com.streamplaydomain.entities.Briefing;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

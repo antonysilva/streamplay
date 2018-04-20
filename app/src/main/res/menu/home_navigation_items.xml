@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_videos_navigation"
+        android:icon="@drawable/ic_navigation_item_video"
+        android:title="Vídeos"/>
+    <item android:id="@+id/action_articles_navigation"
+        android:icon="@drawable/ic_navigation_item_article"
+        android:title="Artigos"/>
+    <item android:id="@+id/action_search_navigation"
+        android:icon="@drawable/ic_navigation_item_search"
+        android:title="Buscar"/>
+    <item android:id="@+id/action_saved_navigation"
+        android:icon="@drawable/ic_navigation_item_favorite"
+        android:title="Salvos"/>
+    <item android:id="@+id/action_profile_navigation"
+        android:icon="@drawable/ic_navigation_item_profile"
+        android:title="Perfil"/>
+</menu>

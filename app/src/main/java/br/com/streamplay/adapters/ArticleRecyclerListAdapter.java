@@ -2,7 +2,6 @@ package br.com.streamplay.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,8 @@ import java.util.List;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.ui.article.ArticleActivity;
+import br.com.streamplay.article.ArticleActivity;
+import br.com.streamplaydomain.entities.Article;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,11 +26,11 @@ import butterknife.ButterKnife;
 
 public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRecyclerListAdapter.ViewHolder>{
 
-    private List<br.com.streamplaydomain.article.Article> mArticles;
+    private List<Article> mArticles;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public ArticleRecyclerListAdapter(Context context, List<br.com.streamplaydomain.article.Article> articles){
+    public ArticleRecyclerListAdapter(Context context, List<Article> articles){
         mArticles = articles;
         mContext = context;
         mInflater = (LayoutInflater) context.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
@@ -101,7 +101,7 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         }
     }
 
-    public void changeData(List<br.com.streamplaydomain.article.Article> articles){
+    public void changeData(List<Article> articles){
         mArticles = articles;
         notifyDataSetChanged();
     }
