@@ -3,6 +3,9 @@ package br.com.streamplay.video;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +20,29 @@ import br.com.streamplaydata.video.repositories.GetAllVideosRepositoryImpl;
 import br.com.streamplaydomain.base.ThreadExecutor;
 import br.com.streamplaydomain.entities.Video;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class VideoHomeFragment extends BaseFragment implements GetAllVideosHomePresenter.View {
 
     private static VideoHomeFragment instance;
     private GetAllVideosHomePresenter mPresenter;
-    private LinearLayoutManager mLayoutManager;
     @BindView(R.id.list_video_movie)
-    private RecyclerView mListMovies;
+    public RecyclerView mListMovies;
     @BindView(R.id.list_video_tecnology)
-    private RecyclerView mListTecnology;
+    public RecyclerView mListTecnology;
     @BindView(R.id.list_video_anime)
-    private RecyclerView mListAnime;
+    public RecyclerView mListAnime;
     @BindView(R.id.list_video_news)
-    private RecyclerView mListNews;
+    public RecyclerView mListNews;
     @BindView(R.id.list_video_music)
-    private RecyclerView mListMusic;
+    public RecyclerView mListMusic;
+    @BindView(R.id.list_video_sport)
+    public RecyclerView mListSports;
+    @BindView(R.id.list_video_games)
+    public RecyclerView mListGames;
+    @BindView(R.id.main_video)
+    public ImageView mMainVideo;
+
 
     public static VideoHomeFragment getInstance() {
         if(instance == null)
@@ -42,15 +52,6 @@ public class VideoHomeFragment extends BaseFragment implements GetAllVideosHomeP
 
     @Override
     public void initialize() {
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-
-        mListMovies.setLayoutManager(mLayoutManager);
-        mListTecnology.setLayoutManager(mLayoutManager);
-        mListAnime.setLayoutManager(mLayoutManager);
-        mListNews.setLayoutManager(mLayoutManager);
-        mListMusic.setLayoutManager(mLayoutManager);
-
         mPresenter = new GetAllVideosHomePresenterImpl(ThreadExecutor.getInstance(),
                                                        UIThread.getInstance(),
                                                        new GetAllVideosRepositoryImpl(),
@@ -59,7 +60,7 @@ public class VideoHomeFragment extends BaseFragment implements GetAllVideosHomeP
 
     @Override
     public void initView(View view) {
-
+        ButterKnife.bind(this, view);
     }
 
     @Override
@@ -69,14 +70,35 @@ public class VideoHomeFragment extends BaseFragment implements GetAllVideosHomeP
 
     @Override
     public void initializeCompleted() {
+        mListMovies.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListMovies.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+        mListTecnology.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListTecnology.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+        mListAnime.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListAnime.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+        mListNews.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListNews.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+        mListMusic.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListMusic.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+        mListSports.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListSports.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+        mListGames.setLayoutManager(new LinearLayoutManager(getContext()));
+        ((LinearLayoutManager) mListGames.getLayoutManager()).setOrientation(LinearLayoutManager.HORIZONTAL);
+
         mPresenter.getAllVideosHome();
     }
 
     @Override
     public void onGetAllVideosHomeSuccess(List<Video> videos) {
         if(videos.size() > 0){
-            HomeVideoListAdapter adapter = new HomeVideoListAdapter(getContext(), videos);
-            mListMovies.setAdapter(adapter);
+            Picasso.get().load(videos.get(2).getImage_url()).into(mMainVideo);
+            mListMovies.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("movie", videos)));
+            mListTecnology.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("tecnology", videos)));
+            mListAnime.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("anime", videos)));
+            mListNews.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("news", videos)));
+            mListMusic.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("music", videos)));
+            mListSports.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("sport", videos)));
+            mListGames.setAdapter(new HomeVideoListAdapter(getContext(), getVideoByCategory("games", videos)));
         }
     }
 

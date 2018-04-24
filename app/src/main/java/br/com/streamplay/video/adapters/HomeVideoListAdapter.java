@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -36,10 +37,11 @@ public class HomeVideoListAdapter extends RecyclerView.Adapter<HomeVideoListAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Picasso.with(mContext)
+        Picasso.get()
                 .load(mVideos.get(position).getImage_url())
-                .centerCrop()
                 .into(holder.mImage);
+
+        holder.mMovieTitle.setText(mVideos.get(position).getTitle());
     }
 
     @Override
@@ -51,10 +53,12 @@ public class HomeVideoListAdapter extends RecyclerView.Adapter<HomeVideoListAdap
 
         @BindView(R.id.image_movie_avatar)
         ImageView mImage;
+        @BindView(R.id.txt_movie_title)
+        TextView mMovieTitle;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this,itemView);
         }
     }
 

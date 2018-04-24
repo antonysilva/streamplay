@@ -41,7 +41,7 @@ public class GetAllVideosHomePresenterImpl extends ApplicationPresenter implemen
     }
 
     @Override
-    public void getAllVideosCallback(List<Video> videos) {
+    public void getAllVideoSuccess(List<Video> videos) {
         mCallback.onGetAllVideosHomeSuccess(videos);
     }
 }

@@ -69,7 +69,7 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         holder.mAuthor.setText(mArticles.get(position).getAuthor());
         holder.mTitle.setText(mArticles.get(position).getTitle());
         holder.mDescription.setText(mArticles.get(position).getDescription());
-        Picasso.with(mContext)
+        Picasso.get()
                .load(mArticles.get(position)
                .getImage())
                .into(holder.mImage);

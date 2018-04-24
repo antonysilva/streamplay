@@ -23,19 +23,18 @@ public class GetAllVideosRepositoryImpl implements GetAllVideosRepository {
     }
 
     @Override
-    public List<Video> getAllVideos() {
+    public void getAllVideos(final GetAllVideosRepository.Callback callback) {
         GetAllVideosClient.getInstance().execute(new GetAllVideosCallback() {
             @Override
             public void onSuccess(List<Video> videos) {
-                mVideo = videos;
+                callback.getAllVideoSuccess(videos);
             }
 
             @Override
             public void onError() {
-                mVideo = new ArrayList<>();
+                callback.getAllVideoSuccess(new ArrayList<Video>());
             }
         });
-        return mVideo;
     }
 
 }

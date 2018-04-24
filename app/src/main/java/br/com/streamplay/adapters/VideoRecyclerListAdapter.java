@@ -42,7 +42,7 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
     public void onBindViewHolder(VideoRecyclerListAdapter.ViewHolder holder, int position) {
         holder.mTitle.setText(mVideos.get(position).getTitle());
         holder.mDescription.setText(mVideos.get(position).getDescription());
-        Picasso.with(mContext)
+        Picasso.get()
                 .load(mVideos.get(position)
                         .getImage_url())
                 .into(holder.mImage);

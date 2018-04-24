@@ -26,11 +26,15 @@ public class GetAllVideosInteractorImpl extends AbstractInteractor implements Ge
 
     @Override
     public void run() {
-        mVideos = mRepository.getAllVideos();
-
-        if(!(mVideos = mRepository.getAllVideos()).isEmpty())
-            onSuccess();
-        onError();
+        mRepository.getAllVideos(new GetAllVideosRepository.Callback() {
+            @Override
+            public void getAllVideoSuccess(List<Video> videos) {
+                mVideos = videos;
+                if(mVideos.isEmpty())
+                    onError();
+                onSuccess();
+            }
+        });
     }
 
     @Override
@@ -38,7 +42,7 @@ public class GetAllVideosInteractorImpl extends AbstractInteractor implements Ge
         mMainThread.post(new Runnable() {
             @Override
             public void run() {
-                mCallback.getAllVideosCallback(mVideos);
+                mCallback.getAllVideoSuccess(mVideos);
             }
         });
     }
@@ -48,9 +52,10 @@ public class GetAllVideosInteractorImpl extends AbstractInteractor implements Ge
         mMainThread.post(new Runnable() {
             @Override
             public void run() {
-                mCallback.getAllVideosCallback(new ArrayList<>());
+                mCallback.getAllVideoSuccess(new ArrayList<>());
             }
         });
     }
+
 
 }

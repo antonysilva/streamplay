@@ -6,6 +6,10 @@ import br.com.streamplaydomain.entities.Video;
 
 public interface GetAllVideosRepository {
 
-    List<Video> getAllVideos();
+    void getAllVideos(GetAllVideosRepository.Callback callback);
+
+    interface Callback{
+        void getAllVideoSuccess(List<Video> videos);
+    }
 
 }

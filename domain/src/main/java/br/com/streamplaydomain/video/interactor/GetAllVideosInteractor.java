@@ -12,7 +12,7 @@ public interface GetAllVideosInteractor extends Interactor {
     void onError();
 
     interface Callback{
-        void getAllVideosCallback(List<Video> videos);
+        void getAllVideoSuccess(List<Video> videos);
     }
 
 }
