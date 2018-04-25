@@ -1,7 +1,9 @@
-package br.com.streamplaydata.video.models;
+package br.com.streamplaydata.models.mappers;
 
 import java.util.Iterator;
 import java.util.List;
+
+import br.com.streamplaydata.models.VideoModel;
 
 /**
  * Created by Antony Silva on 08/02/2018.
@@ -9,8 +11,8 @@ import java.util.List;
 
 public class VideoIterator implements Iterator<VideoModel> {
 
-    List<VideoModel> videoModels;
-    int position = 0;
+    private List<VideoModel> videoModels;
+    private int position = 0;
 
     public VideoIterator(List<VideoModel> articleModels){
         this.videoModels = articleModels;

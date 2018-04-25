@@ -3,10 +3,10 @@ package br.com.streamplaydata.video.clients;
 import java.util.List;
 
 import br.com.streamplaydata.base.RetrofitBase;
-import br.com.streamplaydata.video.models.VideoModel;
+import br.com.streamplaydata.models.VideoModel;
 import br.com.streamplaydata.services.VideoService;
 import br.com.streamplaydata.video.callbacks.GetAllVideosCallback;
-import br.com.streamplaydata.video.models.VideoModelMapper;
+import br.com.streamplaydata.models.mappers.VideoModelMapper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

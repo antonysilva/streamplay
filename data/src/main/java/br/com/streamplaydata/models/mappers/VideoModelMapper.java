@@ -1,8 +1,9 @@
-package br.com.streamplaydata.video.models;
+package br.com.streamplaydata.models.mappers;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.streamplaydata.models.VideoModel;
 import br.com.streamplaydomain.entities.Video;
 
 public class VideoModelMapper {

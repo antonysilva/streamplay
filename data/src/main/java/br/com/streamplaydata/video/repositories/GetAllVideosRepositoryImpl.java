@@ -11,7 +11,6 @@ import br.com.streamplaydomain.video.repositories.GetAllVideosRepository;
 public class GetAllVideosRepositoryImpl implements GetAllVideosRepository {
 
     private static GetAllVideosRepositoryImpl instance;
-    List<Video> mVideo;
 
     public static GetAllVideosRepositoryImpl getInstance() {
         if (instance == null)

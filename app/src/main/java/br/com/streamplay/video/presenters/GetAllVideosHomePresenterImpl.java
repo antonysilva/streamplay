@@ -6,8 +6,8 @@ import br.com.streamplay.presenters.ApplicationPresenter;
 import br.com.streamplaydomain.base.Executor;
 import br.com.streamplaydomain.base.MainThread;
 import br.com.streamplaydomain.entities.Video;
-import br.com.streamplaydomain.video.interactor.GetAllVideosInteractor;
-import br.com.streamplaydomain.video.interactor.impl.GetAllVideosInteractorImpl;
+import br.com.streamplaydomain.video.interactors.GetAllVideosInteractor;
+import br.com.streamplaydomain.video.interactors.GetAllVideosInteractorImpl;
 import br.com.streamplaydomain.video.repositories.GetAllVideosRepository;
 
 /**

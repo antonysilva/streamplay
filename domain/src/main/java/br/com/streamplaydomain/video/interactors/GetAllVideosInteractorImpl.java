@@ -1,4 +1,4 @@
-package br.com.streamplaydomain.video.interactor.impl;
+package br.com.streamplaydomain.video.interactors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import br.com.streamplaydomain.base.AbstractInteractor;
 import br.com.streamplaydomain.base.Executor;
 import br.com.streamplaydomain.base.MainThread;
 import br.com.streamplaydomain.entities.Video;
-import br.com.streamplaydomain.video.interactor.GetAllVideosInteractor;
 import br.com.streamplaydomain.video.repositories.GetAllVideosRepository;
 
 public class GetAllVideosInteractorImpl extends AbstractInteractor implements GetAllVideosInteractor{

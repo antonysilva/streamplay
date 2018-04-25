@@ -2,7 +2,7 @@ package br.com.streamplaydata.breafing.mappers;
 
 import br.com.streamplaydata.article.mapper.ArticleMapper;
 import br.com.streamplaydata.breafing.model.BriefingModel;
-import br.com.streamplaydata.video.models.VideoModelMapper;
+import br.com.streamplaydata.models.mappers.VideoModelMapper;
 import br.com.streamplaydomain.entities.Briefing;
 
 /**

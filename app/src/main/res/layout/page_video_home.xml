@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/tx_movie"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -40,7 +40,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_movie"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_movie"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/tx_tecnology"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -60,7 +60,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_tecnology"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_tecnology"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
 
         <TextView
             android:id="@+id/tx_anime"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -81,7 +81,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_anime"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_anime"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
 
         <TextView
             android:id="@+id/tx_news"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -101,7 +101,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_news"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_news"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
 
         <TextView
             android:id="@+id/tx_sport"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -121,7 +121,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_sport"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_sport"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +130,7 @@
 
         <TextView
             android:id="@+id/tx_games"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -142,7 +142,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_games"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_games"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +150,7 @@
 
         <TextView
             android:id="@+id/tx_music"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/vide_home_title_list"
             android:textColor="@android:color/black"
@@ -162,7 +162,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_video_music"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tx_music"
             app:layout_constraintStart_toStartOf="parent"

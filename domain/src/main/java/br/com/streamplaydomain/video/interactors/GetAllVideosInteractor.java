@@ -1,9 +1,8 @@
-package br.com.streamplaydomain.video.interactor;
+package br.com.streamplaydomain.video.interactors;
 
 import java.util.List;
 
 import br.com.streamplaydomain.base.Interactor;
-import br.com.streamplaydomain.entities.User;
 import br.com.streamplaydomain.entities.Video;
 
 public interface GetAllVideosInteractor extends Interactor {
