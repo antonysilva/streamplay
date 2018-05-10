@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import br.com.streamplaydomain.entities.Article;
+import br.com.streamplaydomain.article.ArticleEntity;
 
 /**
  * Created by Antony on 17/12/2017.
@@ -53,16 +53,16 @@ public class ArticleContract {
                 COLUMN_NAME_PUBLISHED_AT + " " + StreamPlayHelper.TEXT_TYPE + " ); ";
     }
 
-    public static long create(Article article, SQLiteDatabase database) throws Exception{
+    public static long create(ArticleEntity articleEntity, SQLiteDatabase database) throws Exception{
         ContentValues values = new ContentValues();
-        values.put(ArticleEntry.COLUMN_NAME_ID, article.getId());
-        values.put(ArticleEntry.COLUMN_NAME_AUTHOR, article.getAuthor());
-        values.put(ArticleEntry.COLUMN_NAME_CATEGORY, article.getCategory());
-        values.put(ArticleEntry.COLUMN_NAME_TITLE, article.getTitle());
-        values.put(ArticleEntry.COLUMN_NAME_DESCRIPTION, article.getDescription());
-        values.put(ArticleEntry.COLUMN_NAME_IMAGE, article.getImage());
-        values.put(ArticleEntry.COLUMN_NAME_ARTICLE_URL, article.getArticle_url());
-        values.put(ArticleEntry.COLUMN_NAME_PUBLISHED_AT, article.getPublished_at());
+        values.put(ArticleEntry.COLUMN_NAME_ID, articleEntity.id);
+        values.put(ArticleEntry.COLUMN_NAME_AUTHOR, articleEntity.author);
+        values.put(ArticleEntry.COLUMN_NAME_CATEGORY, articleEntity.category);
+        values.put(ArticleEntry.COLUMN_NAME_TITLE, articleEntity.title);
+        values.put(ArticleEntry.COLUMN_NAME_DESCRIPTION, articleEntity.description);
+        values.put(ArticleEntry.COLUMN_NAME_IMAGE, articleEntity.image);
+        values.put(ArticleEntry.COLUMN_NAME_ARTICLE_URL, articleEntity.article_url);
+        values.put(ArticleEntry.COLUMN_NAME_PUBLISHED_AT, articleEntity.published_at);
 
         long newRowId = database.insert(ArticleEntry.TABLE_NAME, null, values);
         return newRowId;

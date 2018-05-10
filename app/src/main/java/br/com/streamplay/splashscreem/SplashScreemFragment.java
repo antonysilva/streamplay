@@ -18,9 +18,9 @@ import br.com.streamplay.database.VideoContract;
 import br.com.streamplay.presenters.home.HomePresenter;
 import br.com.streamplay.home.HomeActivity;
 import br.com.streamplay.login.views.LoginActivity;
-import br.com.streamplaydomain.entities.Article;
+import br.com.streamplaydomain.article.ArticleEntity;
 import br.com.streamplaydomain.entities.Briefing;
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 
 /**
  * Created by Antony on 17/12/2017.
@@ -48,20 +48,20 @@ public class SplashScreemFragment extends Fragment {
         try{
             SQLiteDatabase database = Applicattion.applicationHelper.getWritableDatabase();
 
-            for(Video video : data.getVideos()){
-                String[] id = { String.valueOf(video.getId()) };
+            for(VideoEntity video : data.getVideos()){
+                String[] id = { String.valueOf(video.id) };
                 Cursor cursor = VideoContract.findById(id, database);
                 if(cursor != null){
                     if(!cursor.moveToFirst()){ VideoContract.create(video, database); }
                 }else{ VideoContract.create(video, database); }
             }
 
-            for (Article article : data.getArticles()){
-                String[] id = { String.valueOf(article.getId()) };
+            for (ArticleEntity articleEntity : data.getArticleEntities()){
+                String[] id = { String.valueOf(articleEntity.id) };
                 Cursor cursor = ArticleContract.findById(id, database);
                 if(cursor != null){
-                    if(!cursor.moveToFirst()){ ArticleContract.create(article, database); }
-                }else{ ArticleContract.create(article, database); }
+                    if(!cursor.moveToFirst()){ ArticleContract.create(articleEntity, database); }
+                }else{ ArticleContract.create(articleEntity, database); }
             }
         }catch (Throwable t){ }
     }

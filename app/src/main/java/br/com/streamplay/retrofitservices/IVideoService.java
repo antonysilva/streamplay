@@ -2,7 +2,7 @@ package br.com.streamplay.retrofitservices;
 
 import java.util.List;
 
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,6 +14,6 @@ import retrofit2.http.Path;
 public interface IVideoService {
 
     @GET("/videos/category/{category}")
-    Call<List<Video>> findByCategory(@Path("category") String category);
+    Call<List<VideoEntity>> findByCategory(@Path("category") String category);
 
 }

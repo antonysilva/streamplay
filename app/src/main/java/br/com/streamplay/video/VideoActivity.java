@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -17,7 +17,7 @@ public class VideoActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    Video mVideo;
+    VideoEntity mVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,9 @@ public class VideoActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        mVideo = (Video) getIntent().getSerializableExtra(Constant.BUNDLE_HOME_VIDEO_DATA);
+        mVideo = (VideoEntity) getIntent().getSerializableExtra(Constant.BUNDLE_HOME_VIDEO_DATA);
 
-        setTitle(mVideo.getTitle());
+        setTitle(mVideo.title);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

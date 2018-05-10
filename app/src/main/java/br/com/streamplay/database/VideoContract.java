@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 
 /**
  * Created by Antony on 17/12/2017.
@@ -48,14 +48,14 @@ public class VideoContract {
                 COLUMN_NAME_TAGS + " " + StreamPlayHelper.TEXT_TYPE + " ); ";
     }
 
-    public static long create(Video video, SQLiteDatabase database) throws Exception{
+    public static long create(VideoEntity video, SQLiteDatabase database) throws Exception{
         ContentValues values = new ContentValues();
-        values.put(VideoEntry.COLUMN_NAME_ID, video.getId());
-        values.put(VideoEntry.COLUMN_NAME_TITLE, video.getTitle());
-        values.put(VideoEntry.COLUMN_NAME_CATEGORY, video.getCategory());
-        values.put(VideoEntry.COLUMN_NAME_DESCRIPTION, video.getDescription());
-        values.put(VideoEntry.COLUMN_NAME_IMAGE_URL, video.getImage_url());
-        values.put(VideoEntry.COLUMN_NAME_VIDEO_URL, video.getVideo_url());
+        values.put(VideoEntry.COLUMN_NAME_ID, video.id);
+        values.put(VideoEntry.COLUMN_NAME_TITLE, video.title);
+        values.put(VideoEntry.COLUMN_NAME_CATEGORY, video.category);
+        values.put(VideoEntry.COLUMN_NAME_DESCRIPTION, video.description);
+        values.put(VideoEntry.COLUMN_NAME_IMAGE_URL, video.image_url);
+        values.put(VideoEntry.COLUMN_NAME_VIDEO_URL, video.video_url);
 
         long newRowId = database.insert(VideoEntry.TABLE_NAME, null, values);
         return newRowId;

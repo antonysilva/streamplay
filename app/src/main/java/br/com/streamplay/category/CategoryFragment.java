@@ -21,8 +21,8 @@ import br.com.streamplay.callbacks.IArticleCallback;
 import br.com.streamplay.callbacks.IVideoCallback;
 import br.com.streamplay.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
-import br.com.streamplaydomain.entities.Article;
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.article.ArticleEntity;
+import br.com.streamplaydomain.video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,8 +35,8 @@ public class CategoryFragment extends Fragment {
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
-    List<Article> mArticles;
-    List<Video> mVideos;
+    List<ArticleEntity> mArticleEntities;
+    List<VideoEntity> mVideos;
 
     String mCategory;
     String mOptions; // options: 'article' / 'video'
@@ -86,9 +86,9 @@ public class CategoryFragment extends Fragment {
      */
     IArticleCallback articleCallback = new IArticleCallback() {
         @Override
-        public void onSuccess(List<Article> articles) {
-            mArticles = articles;
-            mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mArticles));
+        public void onSuccess(List<ArticleEntity> articleEntities) {
+            mArticleEntities = articleEntities;
+            mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mArticleEntities));
         }
 
         @Override
@@ -102,7 +102,7 @@ public class CategoryFragment extends Fragment {
      */
     IVideoCallback videoCallback = new IVideoCallback() {
         @Override
-        public void onSuccess(List<Video> videos) {
+        public void onSuccess(List<VideoEntity> videos) {
             mVideos = videos;
             mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), mVideos));
         }

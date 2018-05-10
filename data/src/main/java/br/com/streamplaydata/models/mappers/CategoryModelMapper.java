@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.streamplaydata.models.CategoryModel;
-import br.com.streamplaydomain.entities.Video;
 import br.com.streamplaydomain.entities.Category;
+import br.com.streamplaydomain.video.VideoEntity;
 
 public class CategoryModelMapper {
 
@@ -17,7 +17,7 @@ public class CategoryModelMapper {
         return instance;
     }
 
-    public Video convert(CategoryModel categoryModel){
+    public VideoEntity convert(CategoryModel categoryModel){
         return null;
     }
 

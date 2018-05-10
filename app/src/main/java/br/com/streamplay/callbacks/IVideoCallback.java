@@ -2,7 +2,7 @@ package br.com.streamplay.callbacks;
 
 import java.util.List;
 
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 
 /**
  * Created by Antony on 10/12/2017.
@@ -10,7 +10,7 @@ import br.com.streamplaydomain.entities.Video;
 
 public interface IVideoCallback {
 
-    void onSuccess(List<Video> video);
+    void onSuccess(List<VideoEntity> video);
     void onFailure(Throwable t);
 
 }

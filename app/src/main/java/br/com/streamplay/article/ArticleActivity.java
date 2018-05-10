@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplaydomain.entities.Article;
+import br.com.streamplaydomain.article.ArticleEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -17,7 +17,7 @@ public class ArticleActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    Article mArticle;
+    ArticleEntity mArticleEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,9 @@ public class ArticleActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        mArticle = (Article) getIntent().getSerializableExtra(Constant.BUNDLE_ARTICLE_DATA);
+        mArticleEntity = (ArticleEntity) getIntent().getSerializableExtra(Constant.BUNDLE_ARTICLE_DATA);
 
-        setTitle(mArticle.getTitle());
+        setTitle(mArticleEntity.title);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -39,7 +39,7 @@ public class ArticleActivity extends AppCompatActivity {
 
     private void startFragment(){
         Bundle args = new Bundle();
-        args.putSerializable(Constant.BUNDLE_ARTICLE_DATA, mArticle);
+        args.putSerializable(Constant.BUNDLE_ARTICLE_DATA, mArticleEntity);
 
         ArticleFragment fragment = new ArticleFragment();
         fragment.setArguments(args);

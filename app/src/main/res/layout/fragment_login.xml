@@ -5,16 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <com.yqritc.scalablevideoview.ScalableVideoView
+    <ImageView
         android:id="@+id/videoview_splashscreem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:scalableType="centerCrop"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!--<com.yqritc.scalablevideoview.ScalableVideoView-->
+        <!--android:id="@+id/videoview_splashscreem"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:scalableType="centerCrop"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/view_buttons"

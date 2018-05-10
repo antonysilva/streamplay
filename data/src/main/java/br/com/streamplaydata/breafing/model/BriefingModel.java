@@ -2,8 +2,8 @@ package br.com.streamplaydata.breafing.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import br.com.streamplaydata.article.model.ArticleModel;
-import br.com.streamplaydata.models.VideoModel;
+import br.com.streamplaydata.article.ArticleModel;
+import br.com.streamplaydata.video.VideoModel;
 
 /**
  * Created by Antony Silva on 08/02/2018.

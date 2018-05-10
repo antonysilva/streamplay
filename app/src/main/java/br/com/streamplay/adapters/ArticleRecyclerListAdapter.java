@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.article.ArticleActivity;
-import br.com.streamplaydomain.entities.Article;
+import br.com.streamplaydomain.article.ArticleEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,12 +26,12 @@ import butterknife.ButterKnife;
 
 public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRecyclerListAdapter.ViewHolder>{
 
-    private List<Article> mArticles;
+    private List<ArticleEntity> mArticleEntities;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public ArticleRecyclerListAdapter(Context context, List<Article> articles){
-        mArticles = articles;
+    public ArticleRecyclerListAdapter(Context context, List<ArticleEntity> articleEntities){
+        mArticleEntities = articleEntities;
         mContext = context;
         mInflater = (LayoutInflater) context.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
     }
@@ -47,7 +47,7 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ArticleActivity.class);
-                intent.putExtra(Constant.BUNDLE_ARTICLE_DATA, mArticles.get(position));
+                intent.putExtra(Constant.BUNDLE_ARTICLE_DATA, mArticleEntities.get(position));
                 mContext.startActivity(intent);
             }
         };
@@ -66,18 +66,18 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         holder.mImage.setOnClickListener(listener);
         holder.mFavirite.setOnClickListener(listenerFvorite);
 
-        holder.mAuthor.setText(mArticles.get(position).getAuthor());
-        holder.mTitle.setText(mArticles.get(position).getTitle());
-        holder.mDescription.setText(mArticles.get(position).getDescription());
-        Picasso.get()
-               .load(mArticles.get(position)
-               .getImage())
+        holder.mAuthor.setText(mArticleEntities.get(position).author);
+        holder.mTitle.setText(mArticleEntities.get(position).title);
+        holder.mDescription.setText(mArticleEntities.get(position).description);
+        Glide.with(holder.itemView)
+               .load(mArticleEntities.get(position)
+               .image)
                .into(holder.mImage);
     }
 
     @Override
     public int getItemCount() {
-        return mArticles.size();
+        return mArticleEntities.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -101,8 +101,8 @@ public class ArticleRecyclerListAdapter extends  RecyclerView.Adapter<ArticleRec
         }
     }
 
-    public void changeData(List<Article> articles){
-        mArticles = articles;
+    public void changeData(List<ArticleEntity> articleEntities){
+        mArticleEntities = articleEntities;
         notifyDataSetChanged();
     }
 

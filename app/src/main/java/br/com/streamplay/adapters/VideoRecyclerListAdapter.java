@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import br.com.streamplay.R;
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -23,11 +23,11 @@ import butterknife.ButterKnife;
 
 public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecyclerListAdapter.ViewHolder> {
 
-    private List<Video> mVideos;
+    private List<VideoEntity> mVideos;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public VideoRecyclerListAdapter(Context context, List<Video> videos){
+    public VideoRecyclerListAdapter(Context context, List<VideoEntity> videos){
         mVideos = videos;
         mContext = context;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -40,11 +40,11 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
 
     @Override
     public void onBindViewHolder(VideoRecyclerListAdapter.ViewHolder holder, int position) {
-        holder.mTitle.setText(mVideos.get(position).getTitle());
-        holder.mDescription.setText(mVideos.get(position).getDescription());
-        Picasso.get()
+        holder.mTitle.setText(mVideos.get(position).title);
+        holder.mDescription.setText(mVideos.get(position).description);
+        Glide.with(holder.itemView)
                 .load(mVideos.get(position)
-                        .getImage_url())
+                        .image_url)
                 .into(holder.mImage);
     }
 
@@ -68,7 +68,7 @@ public class VideoRecyclerListAdapter extends  RecyclerView.Adapter<VideoRecycle
         }
     }
 
-    public void changeData(List<Video> videos){
+    public void changeData(List<VideoEntity> videos){
         mVideos = videos;
         notifyDataSetChanged();
     }

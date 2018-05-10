@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.streamplaydomain.article.ArticleEntity;
+import br.com.streamplaydomain.video.VideoEntity;
+
 
 /**
  * Created by Antony Silva on 07/02/2018.
@@ -11,32 +14,32 @@ import java.util.List;
 
 public class Briefing implements Serializable{
 
-    private List<Video> videos;
-    private List<Article> articles;
+    private List<VideoEntity> videos;
+    private List<ArticleEntity> articleEntities;
 
     public Briefing(){
         videos = new ArrayList<>();
-        articles = new ArrayList<>();
+        articleEntities = new ArrayList<>();
     }
 
-    public Briefing(List<Video> videos, List<Article> articles) {
+    public Briefing(List<VideoEntity> videos, List<ArticleEntity> articleEntities) {
         this.videos = videos;
-        this.articles = articles;
+        this.articleEntities = articleEntities;
     }
 
-    public List<Video> getVideos() {
+    public List<VideoEntity> getVideos() {
         return videos;
     }
 
-    public void setVideos(List<Video> videos) {
+    public void setVideos(List<VideoEntity> videos) {
         this.videos = videos;
     }
 
-    public List<Article> getArticles() {
-        return articles;
+    public List<ArticleEntity> getArticleEntities() {
+        return articleEntities;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setArticleEntities(List<ArticleEntity> articleEntities) {
+        this.articleEntities = articleEntities;
     }
 }

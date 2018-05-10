@@ -58,7 +58,7 @@ public class HomePagerFragment extends BaseFragment {
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewVideoListener));
 //            mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), mData.getVideos()));
         }else if(mPagerPosition == 1){
-            mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mData.getArticles()));
+            mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mData.getArticleEntities()));
         }
     }
 

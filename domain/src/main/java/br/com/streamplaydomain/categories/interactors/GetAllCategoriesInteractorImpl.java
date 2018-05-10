@@ -6,9 +6,7 @@ import br.com.streamplaydomain.base.AbstractInteractor;
 import br.com.streamplaydomain.base.Executor;
 import br.com.streamplaydomain.base.MainThread;
 import br.com.streamplaydomain.categories.repositories.GetAllCategoriesRepository;
-import br.com.streamplaydomain.entities.Article;
 import br.com.streamplaydomain.entities.Category;
-import br.com.streamplaydomain.video.repositories.GetAllVideosRepository;
 
 public class GetAllCategoriesInteractorImpl extends AbstractInteractor implements GetAllCategoriesInteractor {
 

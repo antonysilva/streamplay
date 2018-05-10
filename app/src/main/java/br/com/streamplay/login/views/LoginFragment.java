@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.yqritc.scalablevideoview.ScalableVideoView;
 
 import br.com.streamplay.Base.BaseFragment;
@@ -22,7 +23,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
     private static LoginFragment instance;
     @BindView(R.id.videoview_splashscreem)
-    public ScalableVideoView mVideoviewLogin;
+    public ImageView mVideoviewLogin;
     @BindView(R.id.btn_signin)
     public Button mSigninButton;
     @BindView(R.id.btn_signup)
@@ -77,15 +78,16 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
     protected void startOpennedVideo(){
         try{
-            Uri path = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.party);
-            mVideoviewLogin.setDataSource(getContext(), path);
-            mVideoviewLogin.prepareAsync(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mVideoviewLogin.setLooping(true);
-                    mVideoviewLogin.start();
-                }
-            });
+            Glide.with(this).load(R.drawable.video_man_playing).into(mVideoviewLogin);
+//            Uri path = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.party);
+//            mVideoviewLogin.setDataSource(getContext(), path);
+//            mVideoviewLogin.prepareAsync(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//                    mVideoviewLogin.setLooping(true);
+//                    mVideoviewLogin.start();
+//                }
+//            });
         }catch (Exception ex){ }
     }
 

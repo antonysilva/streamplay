@@ -18,7 +18,7 @@ import android.widget.ProgressBar;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplaydomain.entities.Article;
+import br.com.streamplaydomain.article.ArticleEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -33,7 +33,7 @@ public class ArticleFragment extends Fragment {
     @BindView(R.id.progress)
     ProgressBar mProgress;
 
-    Article mArticle;
+    ArticleEntity mArticleEntity;
 
     @Nullable
     @Override
@@ -42,7 +42,7 @@ public class ArticleFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mArticle = (Article) getArguments().getSerializable(Constant.BUNDLE_ARTICLE_DATA);
+        mArticleEntity = (ArticleEntity) getArguments().getSerializable(Constant.BUNDLE_ARTICLE_DATA);
 
         openArticle();
 
@@ -66,7 +66,7 @@ public class ArticleFragment extends Fragment {
             mWebView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         }
 
-        mWebView.loadUrl(mArticle.getArticle_url());
+        mWebView.loadUrl(mArticleEntity.article_url);
     }
 
     private class SSLTolerentWebViewClient extends WebViewClient {

@@ -8,22 +8,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import br.com.streamplay.R;
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeVideoListAdapter extends RecyclerView.Adapter<HomeVideoListAdapter.ViewHolder> {
 
-    List<Video> mVideos;
+    List<VideoEntity> mVideos;
     Context mContext;
     LayoutInflater mLayoutInflater;
 
-    public HomeVideoListAdapter(Context context, List<Video> videos){
+    public HomeVideoListAdapter(Context context, List<VideoEntity> videos){
         mContext = context;
         mVideos = videos;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -37,11 +37,11 @@ public class HomeVideoListAdapter extends RecyclerView.Adapter<HomeVideoListAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Picasso.get()
-                .load(mVideos.get(position).getImage_url())
+        Glide.with(holder.itemView)
+                .load(mVideos.get(position).image_url)
                 .into(holder.mImage);
 
-        holder.mMovieTitle.setText(mVideos.get(position).getTitle());
+        holder.mMovieTitle.setText(mVideos.get(position).title);
     }
 
     @Override

@@ -16,12 +16,13 @@ import br.com.streamplay.adapters.HomeViewPagerAdapter;
 import br.com.streamplay.category.CategoryActivity;
 import br.com.streamplay.presenters.home.HomePresenter;
 import br.com.streamplay.presenters.home.HomePresenterContract;
-import br.com.streamplay.article.ArticleHomeFragment;
-import br.com.streamplay.search.SearchableActivity;
-import br.com.streamplay.category.CategoryHomeFragment;
+import br.com.streamplay.home.article.ArticleHomeFragment;
+import br.com.streamplay.home.search.SearchableActivity;
+import br.com.streamplay.home.category.CategoryHomeFragment;
 import br.com.streamplay.favorite.FavoriteHomeFragment;
-import br.com.streamplay.profile.ProfileHomeFragment;
-import br.com.streamplay.video.VideoHomeFragment;
+import br.com.streamplay.home.profile.ProfileHomeFragment;
+import br.com.streamplay.util.BottomNavigationViewHelper;
+import br.com.streamplay.home.video.VideoHomeFragment;
 import br.com.streamplaydomain.base.ThreadExecutor;
 import br.com.streamplaydomain.entities.Briefing;
 import br.com.streamplaydata.breafing.repositories.BriefingRepositoryImpl;
@@ -51,6 +52,7 @@ public class HomeActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         mNavigationView.setOnNavigationItemSelectedListener(this);
+        BottomNavigationViewHelper.disableShiftMode(mNavigationView);
 
         openFragments(VideoHomeFragment.getInstance());
 

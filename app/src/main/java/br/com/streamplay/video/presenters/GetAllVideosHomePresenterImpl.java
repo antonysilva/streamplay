@@ -3,18 +3,18 @@ package br.com.streamplay.video.presenters;
 import java.util.List;
 
 import br.com.streamplay.presenters.ApplicationPresenter;
+import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosCallback;
 import br.com.streamplaydomain.base.Executor;
 import br.com.streamplaydomain.base.MainThread;
-import br.com.streamplaydomain.entities.Video;
-import br.com.streamplaydomain.video.interactors.GetAllVideosInteractor;
-import br.com.streamplaydomain.video.interactors.GetAllVideosInteractorImpl;
-import br.com.streamplaydomain.video.repositories.GetAllVideosRepository;
+import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosInteractor;
+import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosRepository;
+import br.com.streamplaydomain.video.VideoEntity;
 
 /**
  * Created by Antony on 09/12/2017.
  */
 
-public class GetAllVideosHomePresenterImpl extends ApplicationPresenter implements GetAllVideosHomePresenter, GetAllVideosInteractor.Callback {
+public class GetAllVideosHomePresenterImpl extends ApplicationPresenter implements GetAllVideosHomePresenter, GetAllVideosCallback {
 
     private GetAllVideosRepository mRepository;
     GetAllVideosHomePresenter.View mCallback;
@@ -30,18 +30,23 @@ public class GetAllVideosHomePresenterImpl extends ApplicationPresenter implemen
 
     @Override
     public void getAllVideosHome() {
-        GetAllVideosInteractor interactor = new GetAllVideosInteractorImpl(
-                mExecutor,
-                mMainThread,
-                mRepository,
-                this
-        );
-
-        interactor.execute();
+//        GetAllVideosInteractor interactor = new GetAllVideosInteractor(
+//                mExecutor,
+//                mMainThread,
+//                mRepository,
+//                this
+//        );
+//
+//        interactor.execute();
     }
 
     @Override
-    public void getAllVideoSuccess(List<Video> videos) {
+    public void onSuccess(List<VideoEntity> videos) {
         mCallback.onGetAllVideosHomeSuccess(videos);
+    }
+
+    @Override
+    public void onFailure(Throwable throwable) {
+
     }
 }

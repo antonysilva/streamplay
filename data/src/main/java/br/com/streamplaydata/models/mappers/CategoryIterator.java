@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import br.com.streamplaydata.models.CategoryModel;
-import br.com.streamplaydata.models.VideoModel;
 
 public class CategoryIterator implements Iterator<CategoryModel> {
 

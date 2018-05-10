@@ -19,7 +19,7 @@ import br.com.streamplay.Base.BaseFragment;
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.util.RecyclerItemClickListener;
-import br.com.streamplaydomain.entities.Video;
+import br.com.streamplaydomain.video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,8 +50,8 @@ public class VideoFragment extends BaseFragment{
     public SeekBar mVideoProgress;
 
     public Uri mUri;
-    public Video mVideo;
-    public List<Video> mVideoSuggestions;
+    public VideoEntity mVideo;
+    public List<VideoEntity> mVideoSuggestions;
     public int mStopTime;
 
     private VideoPlayerPresenter mVideoPlayerPresenter;
@@ -73,10 +73,10 @@ public class VideoFragment extends BaseFragment{
 
     @Override
     public void initializeCompleted() {
-        mVideo = (Video) getArguments().getSerializable(Constant.BUNDLE_HOME_VIDEO_DATA);
-        mTitle.setText(mVideo.getTitle());
-        mDescription.setText(mVideo.getDescription());
-        mUri = Uri.parse(mVideo.getVideo_url());
+        mVideo = (VideoEntity) getArguments().getSerializable(Constant.BUNDLE_HOME_VIDEO_DATA);
+        mTitle.setText(mVideo.title);
+        mDescription.setText(mVideo.description);
+        mUri = Uri.parse(mVideo.video_url);
 
         initializeRecyclerView();
 

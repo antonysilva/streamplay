@@ -1,8 +1,8 @@
 package br.com.streamplaydata.breafing.mappers;
 
-import br.com.streamplaydata.article.mapper.ArticleMapper;
+import br.com.streamplaydata.article.ArticleMapper;
 import br.com.streamplaydata.breafing.model.BriefingModel;
-import br.com.streamplaydata.models.mappers.VideoModelMapper;
+import br.com.streamplaydata.video.VideoModelMapper;
 import br.com.streamplaydomain.entities.Briefing;
 
 /**
@@ -22,7 +22,7 @@ public class BriefingMapper {
 
     public Briefing fromDataToDomain(BriefingModel briefingModel){
         Briefing briefingDomain = new Briefing();
-        briefingDomain.setArticles(articleMapper.convertListFromDataToDomain(briefingModel.getArticleModels()));
+//        briefingDomain.setArticles(articleMapper.convertListFromDataToDomain(briefingModel.getArticleModels()));
 //        briefingDomain.setVideos(videoMapper.convertListFromDataToDomain(briefingModel.getVideoModels()));
 
         return briefingDomain;

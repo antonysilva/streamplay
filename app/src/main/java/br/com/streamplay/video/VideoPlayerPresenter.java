@@ -84,8 +84,8 @@ public class VideoPlayerPresenter implements VideoPlayerPresenterImpl {
     public void openSharedBox() {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = mFragment.mVideo.getDescription();
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, mFragment.mVideo.getTitle());
+        String shareBody = mFragment.mVideo.description;
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, mFragment.mVideo.title);
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         mFragment.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }

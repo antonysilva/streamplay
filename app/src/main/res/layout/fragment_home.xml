@@ -15,7 +15,7 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_gravity="start"
+        android:layout_gravity="bottom"
         android:background="@color/buttonNavigateViewBackground"
         app:itemTextColor="@drawable/bottom_navigation_text_color"
         app:itemIconTint="@drawable/bottom_navigation_text_color"

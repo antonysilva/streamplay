@@ -2,7 +2,7 @@ package br.com.streamplay.retrofitservices;
 
 import java.util.List;
 
-import br.com.streamplaydomain.entities.Article;
+import br.com.streamplaydomain.article.ArticleEntity;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,6 +14,6 @@ import retrofit2.http.Path;
 public interface IArticleService {
 
     @GET("/articles/category/{category}")
-    Call<List<Article>> findByCategory(@Path("category") String category);
+    Call<List<ArticleEntity>> findByCategory(@Path("category") String category);
 
 }

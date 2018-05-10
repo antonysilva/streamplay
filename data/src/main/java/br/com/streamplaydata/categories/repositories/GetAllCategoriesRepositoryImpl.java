@@ -5,10 +5,8 @@ import java.util.List;
 
 import br.com.streamplaydata.categories.callbacks.GetAllCategoryCallback;
 import br.com.streamplaydata.categories.clients.GetAllCategoryClient;
-import br.com.streamplaydomain.article.repositories.ArticleRepository;
 import br.com.streamplaydomain.categories.repositories.GetAllCategoriesRepository;
 import br.com.streamplaydomain.entities.Category;
-import br.com.streamplaydomain.entities.Video;
 
 public class GetAllCategoriesRepositoryImpl implements GetAllCategoriesRepository {
 
