@@ -12,10 +12,6 @@ import android.view.MenuItem;
 
 import br.com.streamplay.R;
 import br.com.streamplay.UIThread;
-import br.com.streamplay.adapters.HomeViewPagerAdapter;
-import br.com.streamplay.category.CategoryActivity;
-import br.com.streamplay.presenters.home.HomePresenter;
-import br.com.streamplay.presenters.home.HomePresenterContract;
 import br.com.streamplay.home.article.ArticleHomeFragment;
 import br.com.streamplay.home.search.SearchableActivity;
 import br.com.streamplay.home.category.CategoryHomeFragment;
@@ -23,23 +19,20 @@ import br.com.streamplay.favorite.FavoriteHomeFragment;
 import br.com.streamplay.home.profile.ProfileHomeFragment;
 import br.com.streamplay.util.BottomNavigationViewHelper;
 import br.com.streamplay.home.video.VideoHomeFragment;
-import br.com.streamplaydomain.base.ThreadExecutor;
-import br.com.streamplaydomain.entities.Briefing;
-import br.com.streamplaydata.breafing.repositories.BriefingRepositoryImpl;
+import br.com.streamplaydomain.Base.ThreadExecutor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
-                   BottomNavigationView.OnNavigationItemReselectedListener,
-                   HomePresenterContract.View {
+                   BottomNavigationView.OnNavigationItemReselectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.navigation)
     BottomNavigationView mNavigationView;
 
-    private HomePresenter mHomePresenter;
+//    private HomePresenter mHomePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +49,11 @@ public class HomeActivity extends AppCompatActivity
 
         openFragments(VideoHomeFragment.getInstance());
 
-        mHomePresenter = new HomePresenter(
-                ThreadExecutor.getInstance(),
-                UIThread.getInstance(),
-                this,
-                new BriefingRepositoryImpl());
+//        mHomePresenter = new HomePresenter(
+//                ThreadExecutor.getInstance(),
+//                UIThread.getInstance(),
+//                this,
+//                new BriefingRepositoryImpl());
         getHomeData();
 
     }
@@ -86,9 +79,6 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Intent intent = new Intent(this, CategoryActivity.class);
-        int id = item.getItemId();
-
         switch (item.getItemId()){
             case R.id.action_videos_navigation:
                 openFragments(VideoHomeFragment.getInstance());
@@ -124,10 +114,10 @@ public class HomeActivity extends AppCompatActivity
 //        mHomePresenter.getAllBriefingData();
     }
 
-    @Override
-    public void getBriefingData(Briefing briefing) {
-        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager(), briefing);
-    }
+//    @Override
+//    public void getBriefingData(Briefing briefing) {
+//        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager(), briefing);
+//    }
 
     @Override
     public void onNavigationItemReselected(@NonNull MenuItem item) {

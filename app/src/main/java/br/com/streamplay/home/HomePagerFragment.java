@@ -1,6 +1,5 @@
 package br.com.streamplay.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,10 +8,7 @@ import android.view.View;
 import br.com.streamplay.Base.BaseFragment;
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
-import br.com.streamplay.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
-import br.com.streamplaydomain.entities.Briefing;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,7 +21,7 @@ public class HomePagerFragment extends BaseFragment {
     @BindView(R.id.reciylerView)
     RecyclerView mRecyclerView;
 
-    Briefing mData;
+//    Briefing mData;
     int mPagerPosition;
     Bundle mArgs;
 
@@ -46,7 +42,7 @@ public class HomePagerFragment extends BaseFragment {
 
     @Override
     public void initializeCompleted() {
-        mData = (Briefing) mArgs.getSerializable(Constant.BUNDLE_HOME_DATA);
+//        mData = (Briefing) mArgs.getSerializable(Constant.BUNDLE_HOME_DATA);
         mPagerPosition =  mArgs.getInt(Constant.BUNDLE_PAGER_POSITION);
     }
 
@@ -58,7 +54,7 @@ public class HomePagerFragment extends BaseFragment {
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewVideoListener));
 //            mRecyclerView.setAdapter(new VideoRecyclerListAdapter(getContext(), mData.getVideos()));
         }else if(mPagerPosition == 1){
-            mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mData.getArticleEntities()));
+//            mRecyclerView.setAdapter(new ArticleRecyclerListAdapter(getContext(), mData.getArticleEntities()));
         }
     }
 
@@ -68,14 +64,14 @@ public class HomePagerFragment extends BaseFragment {
     RecyclerItemClickListener.OnItemClickListener recyclerViewVideoListener = new RecyclerItemClickListener.OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
-            if(mData != null){
-                if(mData.getVideos().size() > 0){
-                    Intent intent = new Intent(getContext(), VideoActivity.class);
-
-                    intent.putExtra(Constant.BUNDLE_HOME_VIDEO_DATA, mData.getVideos().get(position));
-                    startActivity(intent);
-                }
-            }
+//            if(mData != null){
+//                if(mData.getVideos().size() > 0){
+//                    Intent intent = new Intent(getContext(), VideoActivity.class);
+//
+//                    intent.putExtra(Constant.BUNDLE_HOME_VIDEO_DATA, mData.getVideos().get(position));
+//                    startActivity(intent);
+//                }
+//            }
         }
     };
 

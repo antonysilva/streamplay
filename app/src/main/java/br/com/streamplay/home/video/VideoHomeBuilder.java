@@ -4,8 +4,8 @@ import android.content.Context;
 
 import br.com.streamplay.UIThread;
 import br.com.streamplaydata.video.api.GetAllVideosRepositoryImpl;
-import br.com.streamplaydomain.base.ThreadExecutor;
-import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosInteractor;
+import br.com.streamplaydomain.Base.ThreadExecutor;
+import br.com.streamplaydomain.Video.GetAllVideos.GetAllVideosInteractor;
 
 public class VideoHomeBuilder {
     public static GetAllVideosInteractor create(Context context){

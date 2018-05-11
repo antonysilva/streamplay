@@ -19,7 +19,7 @@ import br.com.streamplay.Base.BaseFragment;
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
 import br.com.streamplay.util.RecyclerItemClickListener;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

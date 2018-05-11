@@ -8,10 +8,10 @@
     <color name="colorVideoPlayer">#99000000</color>
     <color name="colorBackgroundApp">#FFFFFF</color>
     <color name="textColor">#404040</color>
-    <color name="buttonNavigateViewBackground">#8e44ad</color>
-    <color name="backgroundColor">#e6b3ff</color>
-    <color name="buttonNavigateViewTextColor">#99ffffff</color>
-    <color name="buttonNavigateViewTextColorSelected">#ffffffff</color>
+    <color name="buttonNavigateViewBackground">@android:color/white</color>
+    <color name="backgroundColor">#ecf0f1</color>
+    <color name="buttonNavigateViewTextColor">#998e44ad</color>
+    <color name="buttonNavigateViewTextColorSelected">#8e44ad</color>
     <color name="videoNavigationColor">#99000000</color>
 
 </resources>

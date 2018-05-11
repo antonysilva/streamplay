@@ -1,6 +1,6 @@
 package br.com.streamplaydomain.login.interactor;
 
-import br.com.streamplaydomain.base.Interactor;
+import br.com.streamplaydomain.Base.Interactor;
 import br.com.streamplaydomain.entities.User;
 
 public interface SigninInteractor extends Interactor{

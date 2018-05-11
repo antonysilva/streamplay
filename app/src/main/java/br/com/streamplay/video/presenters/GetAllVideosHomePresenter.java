@@ -2,7 +2,7 @@ package br.com.streamplay.video.presenters;
 
 import java.util.List;
 
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 
 public interface GetAllVideosHomePresenter {
 

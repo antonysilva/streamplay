@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginBottom="@dimen/article_itens_space"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/author_avatar"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/author_name"/>
+
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:paddingStart="5dp"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        tools:text="Evolução dos Computadores"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/author_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/article_description"/>
+
+    <TextView
+        android:id="@+id/article_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:paddingStart="5dp"
+        android:paddingBottom="5dp"
+        tools:text="A Evolução dos computadores na data atual e a atualização do homem em seu habitá natural"
+        app:layout_constraintTop_toBottomOf="@+id/article_title"
+        app:layout_constraintStart_toEndOf="@+id/author_avatar"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:paddingStart="5dp"
+        android:textSize="12sp"
+        tools:text="Mário"
+        app:layout_constraintStart_toEndOf="@+id/author_avatar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/article_published_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:paddingEnd="5dp"
+        android:textSize="12sp"
+        tools:text="02/01/2018 13:00:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

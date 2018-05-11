@@ -46,7 +46,7 @@
                 android:drawableStart="@drawable/ic_article"
                 android:drawablePadding="5dp"
                 android:layout_margin="10dp"
-                android:text="@string/articleModels"
+                android:text="@string/articleHomeModels"
                 style="@style/TextViewTitle"/>
 
             <TextView

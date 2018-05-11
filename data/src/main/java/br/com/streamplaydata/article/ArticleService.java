@@ -2,7 +2,7 @@ package br.com.streamplaydata.article;
 
 import java.util.List;
 
-import br.com.streamplaydata.article.ArticleModel;
+import br.com.streamplaydata.article.articlehome.ArticleHomeModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,9 +14,9 @@ import retrofit2.http.Path;
 public interface ArticleService {
 
     @GET("/articles")
-    Call<List<ArticleModel>> findAll();
+    Call<List<ArticleHomeModel>> findAll();
 
     @GET("/articles/category/{category}")
-    Call<List<ArticleModel>> findByCategory(@Path("category") String category);
+    Call<List<ArticleHomeModel>> findByCategory(@Path("category") String category);
 
 }

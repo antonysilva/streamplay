@@ -12,14 +12,9 @@ import java.util.List;
 
 import br.com.streamplay.Base.BaseFragment;
 import br.com.streamplay.R;
-import br.com.streamplay.UIThread;
 import br.com.streamplay.video.adapters.HomeVideoListAdapter;
 import br.com.streamplay.video.presenters.GetAllVideosHomePresenter;
-import br.com.streamplay.video.presenters.GetAllVideosHomePresenterImpl;
-import br.com.streamplaydata.video.api.GetAllVideosRepositoryImpl;
-import br.com.streamplaydomain.base.ThreadExecutor;
-import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosInteractor;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

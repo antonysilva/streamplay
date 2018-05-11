@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import br.com.streamplaydomain.article.ArticleEntity;
+import br.com.streamplaydomain.Article.ArticleEntity;
 
 /**
  * Created by Antony on 17/12/2017.

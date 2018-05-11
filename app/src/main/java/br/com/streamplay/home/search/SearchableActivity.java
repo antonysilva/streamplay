@@ -22,15 +22,12 @@ import java.util.List;
 
 import br.com.streamplay.Applicattion;
 import br.com.streamplay.Constant;
-import br.com.streamplay.adapters.ArticleRecyclerListAdapter;
-import br.com.streamplay.adapters.VideoRecyclerListAdapter;
 import br.com.streamplay.database.ArticleContract;
 import br.com.streamplay.database.VideoContract;
 import br.com.streamplay.video.VideoActivity;
 import br.com.streamplay.util.RecyclerItemClickListener;
-import br.com.streamplaydomain.article.ArticleEntity;
-import br.com.streamplaydomain.entities.Briefing;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Article.ArticleEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -51,9 +48,9 @@ public class SearchableActivity extends AppCompatActivity {
 
     LinearLayoutManager mLayoutManagerV;
     LinearLayoutManager mLayoutManagerA;
-    VideoRecyclerListAdapter mAdapterVideo;
-    ArticleRecyclerListAdapter mAdapterArticle;
-    Briefing mListData;
+//    VideoRecyclerListAdapter mAdapterVideo;
+//    ArticleRecyclerListAdapter mAdapterArticle;
+//    Briefing mListData;
 
     List<VideoEntity> videos = new ArrayList<>();
     List<ArticleEntity> articleEntities = new ArrayList<>();
@@ -72,11 +69,11 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     protected void initView() {
-        mAdapterVideo = new VideoRecyclerListAdapter(this, new ArrayList<VideoEntity>());
+//        mAdapterVideo = new VideoRecyclerListAdapter(this, new ArrayList<VideoEntity>());
         mLayoutManagerV = new LinearLayoutManager(this);
         mLayoutManagerV.setOrientation(LinearLayoutManager.VERTICAL);
 
-        mAdapterArticle = new ArticleRecyclerListAdapter(this, new ArrayList<ArticleEntity>());
+//        mAdapterArticle = new ArticleRecyclerListAdapter(this, new ArrayList<ArticleEntity>());
         mLayoutManagerA = new LinearLayoutManager(this);
         mLayoutManagerA.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -88,11 +85,11 @@ public class SearchableActivity extends AppCompatActivity {
 
 
         mRecyclerViewVideo.setLayoutManager(mLayoutManagerV);
-        mRecyclerViewVideo.setAdapter(mAdapterVideo);
+//        mRecyclerViewVideo.setAdapter(mAdapterVideo);
         mRecyclerViewVideo.addOnItemTouchListener(new RecyclerItemClickListener(SearchableActivity.this, recyclerViewVideoListener));
 
         mRecyclerViewArticle.setLayoutManager(mLayoutManagerA);
-        mRecyclerViewArticle.setAdapter(mAdapterArticle);
+//        mRecyclerViewArticle.setAdapter(mAdapterArticle);
 
         handleSearch( getIntent() );
     }
@@ -200,14 +197,14 @@ public class SearchableActivity extends AppCompatActivity {
             articleEntities = getArticles(query, database);
 
             mNoVideoText.setVisibility((videos.size() == 0) ? View.VISIBLE : View.GONE);
-            if(videos.size() > 0){
-                mAdapterVideo.changeData(videos);
-            }else{ mAdapterVideo.changeData(new ArrayList<VideoEntity>()); }
+//            if(videos.size() > 0){
+//                mAdapterVideo.changeData(videos);
+//            }else{ mAdapterVideo.changeData(new ArrayList<VideoEntity>()); }
 
             mNoArticleText.setVisibility((articleEntities.size() == 0) ? View.VISIBLE : View.GONE);
-            if(articleEntities.size() > 0){
-                mAdapterArticle.changeData(articleEntities);
-            }else{ mAdapterArticle.changeData(new ArrayList<ArticleEntity>()); }
+//            if(articleEntities.size() > 0){
+//                mAdapterArticle.changeData(articleEntities);
+//            }else{ mAdapterArticle.changeData(new ArrayList<ArticleEntity>()); }
 
         }catch (Throwable t){
             String s = "";

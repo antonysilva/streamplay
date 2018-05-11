@@ -2,7 +2,7 @@ package br.com.streamplaydomain.entities;
 
 import java.util.Iterator;
 
-import br.com.streamplaydomain.article.ArticleEntity;
+import br.com.streamplaydomain.Article.ArticleEntity;
 
 /**
  * Created by Antony Silva on 07/02/2018.

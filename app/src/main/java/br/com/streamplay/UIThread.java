@@ -3,7 +3,7 @@ package br.com.streamplay;
 import android.os.Handler;
 import android.os.Looper;
 
-import br.com.streamplaydomain.base.MainThread;
+import br.com.streamplaydomain.Base.MainThread;
 
 /**
  * Created by Antony Silva on 09/02/2018.

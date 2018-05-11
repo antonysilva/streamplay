@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import br.com.streamplay.R;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -1,13 +1,9 @@
 package br.com.streamplay.login.presenter;
 
-import br.com.streamplay.presenters.ApplicationPresenter;
-import br.com.streamplaydomain.base.Executor;
-import br.com.streamplaydomain.base.MainThread;
+import br.com.streamplaydomain.Base.Executor;
+import br.com.streamplaydomain.Base.MainThread;
 
-public class SigninLoginPresenterImpl extends ApplicationPresenter {
+public class SigninLoginPresenterImpl{
 
-    public SigninLoginPresenterImpl(Executor executor, MainThread mainThread) {
-        super(executor, mainThread);
-    }
 
 }

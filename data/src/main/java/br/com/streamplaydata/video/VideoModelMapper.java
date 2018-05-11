@@ -3,7 +3,7 @@ package br.com.streamplaydata.video;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 
 public class VideoModelMapper {
 

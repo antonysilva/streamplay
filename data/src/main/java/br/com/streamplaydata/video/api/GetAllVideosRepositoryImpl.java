@@ -2,9 +2,9 @@ package br.com.streamplaydata.video.api;
 
 import java.util.List;
 
-import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosCallback;
-import br.com.streamplaydomain.video.GetAllVideos.GetAllVideosRepository;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.GetAllVideos.GetAllVideosCallback;
+import br.com.streamplaydomain.Video.GetAllVideos.GetAllVideosRepository;
+import br.com.streamplaydomain.Video.VideoEntity;
 
 public class GetAllVideosRepositoryImpl implements GetAllVideosRepository {
 

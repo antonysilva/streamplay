@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

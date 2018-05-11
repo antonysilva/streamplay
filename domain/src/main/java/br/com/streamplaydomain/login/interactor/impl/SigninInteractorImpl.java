@@ -1,8 +1,8 @@
 package br.com.streamplaydomain.login.interactor.impl;
 
-import br.com.streamplaydomain.base.AbstractInteractor;
-import br.com.streamplaydomain.base.Executor;
-import br.com.streamplaydomain.base.MainThread;
+import br.com.streamplaydomain.Base.AbstractInteractor;
+import br.com.streamplaydomain.Base.Executor;
+import br.com.streamplaydomain.Base.MainThread;
 import br.com.streamplaydomain.entities.User;
 import br.com.streamplaydomain.entities.UserAccount;
 import br.com.streamplaydomain.login.interactor.SigninInteractor;

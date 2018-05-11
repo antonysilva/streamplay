@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 import br.com.streamplay.Constant;
 import br.com.streamplay.R;
-import br.com.streamplaydomain.video.VideoEntity;
+import br.com.streamplaydomain.Video.VideoEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
